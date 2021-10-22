@@ -1,0 +1,620 @@
+{% extends 'base.html' %}
+{% block style %}
+
+{% endblock %}
+
+
+{% block content %}
+<main>
+    <div class="web_deshboard d-flex">
+        <div class="sidebar_wrp">
+            <div class="sidebar_data flex-shrink-0 p-3" style="width: 280px;">
+                <ul class="list-unstyled ps-0">
+                    <li class="mb-1">
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#seo-collapse" aria-expanded="false">
+                            SEO</button>
+                        <div class="collapse" id="seo-collapse">
+                            <div class="sub_menu_wrp">
+                                <div class="submenu_item"><a href="#">SEO Dashboard</a></div>
+                                <div class="submenu_item_title">
+                                    <span>COMPETITIVE RESEARCH</span>
+                                </div>
+                                <ul class="submenu_link">
+                                    <li> <a href="#domainOverview"> Domain Overview</a></li>
+
+                                    <li> <a href="#trafficAnalytics">Traffic Analytics</a></li>
+                                    <li> <a href="#">Organic Research</a></li>
+                                    <li> <a href="#">Keyword Gap</a></li>
+                                    <li> <a href="#">Backlink Gap</a></li>
+                                </ul>
+                            </div>
+                            <div class="sub_menu_wrp">
+                                <div class="submenu_item_title">
+                                    <span>KEYWORD RESEARCH</span>
+                                </div>
+                                <ul class="submenu_link">
+                                    <li><a href="#"> Keyword Overview</a></li>
+                                    <li><a href="#">Keyword Magic Tool</a></li>
+                                    <li><a href="#">Keyword Manager</a></li>
+                                    <li><a href="#">Position Tracking</a></li>
+                                    <li><a href="#">Organic Traffic Insights</a></li>
+                                </ul>
+                            </div>
+                            <div class="sub_menu_wrp">
+                                <div class="submenu_item_title">
+                                    <span>LINK BUILDING</span>
+                                </div>
+                                <ul class="submenu_link">
+                                    <li><a href="#">Backlink Analytics</a></li>
+                                    <li><a href="#">Backlink Audit</a></li>
+                                    <li><a href="#">Link Building Tool</a></li>
+                                    <li><a href="#">Bulk Analysis</a></li>
+
+                                </ul>
+                            </div>
+                            <div class="sub_menu_wrp">
+                                <div class="submenu_item_title">
+                                    <span>ON PAGE & TECH SEO</span>
+                                </div>
+                                <ul class="submenu_link">
+                                    <li><a href="#site_audit">Site Audit</a></li>
+                                    <li><a href="#">Listing Management</a></li>
+                                    <li><a href="#">SEO Content Template</a></li>
+                                    <li><a href="#">On Page SEO Checker</a></li>
+                                    <li><a href="#">Log File Analyzer</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mb-1">
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#local-collapse" aria-expanded="false">
+                            Local SEO
+                        </button>
+                        <div class="collapse" id="local-collapse">
+                            <div class="sub_menu_wrp">
+                                <ul class="submenu_link">
+                                    <li><a href="#">Listing Management</a></li>
+                                    <li><a href="#">Position Tracking</a></li>
+                                    <li><a href="#">Site Audit</a></li>
+                                    <li><a href="#">On Page SEO Checker</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mb-1">
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#advertising-collapse" aria-expanded="false">
+                            Advertising
+                        </button>
+                        <div class="collapse" id="advertising-collapse">
+                            <div class="sub_menu_wrp">
+                                <div class="submenu_item"><a href="#">Advertising Dashboard</a></div>
+                                <div class="submenu_item_title">
+                                    <span>Market Analysis</span>
+                                </div>
+                                <ul class="submenu_link">
+                                    <li> <a href="#">Domain Overview</a></li>
+                                    <li> <a href="#">Advertising Research</a></li>
+                                    <li> <a href="#">Display Advertising</a></li>
+                                    <li> <a href="#">PLA Research</a></li>
+                                </ul>
+                            </div>
+                            <div class="sub_menu_wrp">
+                                <div class="submenu_item_title">
+                                    <span>KEYWORD RESEARCH</span>
+                                </div>
+                                <ul class="submenu_link">
+                                    <li><a href="#"> Keyword Overview</a></li>
+                                    <li><a href="#">Keyword Magic Tool</a></li>
+                                    <li><a href="#">Keyword Manager</a></li>
+                                    <li><a href="#">Position Tracking</a></li>
+                                    <li><a href="#">Organic Traffic Insights</a></li>
+                                </ul>
+                            </div>
+                            <div class="sub_menu_wrp">
+                                <div class="submenu_item_title">
+                                    <span>LINK BUILDING</span>
+                                </div>
+                                <ul class="submenu_link">
+                                    <li><a href="#">Backlink Analytics</a></li>
+                                    <li><a href="#">Backlink Audit</a></li>
+                                    <li><a href="#">Link Building Tool</a></li>
+                                    <li><a href="#">Bulk Analysis</a></li>
+
+                                </ul>
+                            </div>
+                            <div class="sub_menu_wrp">
+                                <div class="submenu_item_title">
+                                    <span>ON PAGE & TECH SEO</span>
+                                </div>
+                                <ul class="submenu_link">
+                                    <li><a href="#">Site Audit</a></li>
+                                    <li><a href="#">Listing Management</a></li>
+                                    <li><a href="#">SEO Content Template</a></li>
+                                    <li><a href="#">On Page SEO Checker</a></li>
+                                    <li><a href="#">Log File Analyzer</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mb-1">
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#orders-collapse" aria-expanded="false">
+                            Social Media
+                        </button>
+                        <div class="collapse" id="orders-collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="#">New</a></li>
+                                <li><a href="#">Processed</a></li>
+                                <li><a href="#">Shipped</a></li>
+                                <li><a href="#">Returned</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mb-1">
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#orders-collapse" aria-expanded="false">
+                            Content Marketing
+                        </button>
+                        <div class="collapse" id="orders-collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="#">New</a></li>
+                                <li><a href="#">Processed</a></li>
+                                <li><a href="#">Shipped</a></li>
+                                <li><a href="#">Returned</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mb-1">
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#orders-collapse" aria-expanded="false">
+                            Competitive Research
+                        </button>
+                        <div class="collapse" id="orders-collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="#">New</a></li>
+                                <li><a href="#">Processed</a></li>
+                                <li><a href="#">Shipped</a></li>
+                                <li><a href="#">Returned</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mb-1">
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#orders-collapse" aria-expanded="false">
+                            Agency Solutions
+                        </button>
+                        <div class="collapse" id="orders-collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="#">New</a></li>
+                                <li><a href="#">Processed</a></li>
+                                <li><a href="#">Shipped</a></li>
+                                <li><a href="#">Returned</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="dashboard_data_wrp">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="target">
+                            <div id="domainOverview">
+
+                                <div class="row">
+                                    <div class="col-lg-8 mx-auto text-center">
+                                        <div class="domain_overview_data">
+                                            <div class="overview_title">
+                                                <h1>Domain Overview</h1>
+                                            </div>
+                                            <div class="domain_overview_sub_title">
+                                                <p>Get instant insights into strengths and weaknesses
+                                                    of your competitor or prospective customer.</p>
+                                            </div>
+                                            <div class="domain_overview_input_select">
+                                                <form action="" method="post" onsubmit="loader()">
+                                                    {% csrf_token %}
+                                                    <input type="url" name="url_name" class="form-control" id=""
+                                                        aria-describedby="">
+
+                                                    <!-- <select class="form-select form-select-sm"
+                                                        aria-label=".form-select-sm example">
+                                                        <option value="Afghanistan">Afghanistan</option>
+                                                        <option value="Albania">Albania</option>
+                                                        <option value="Algeria">Algeria</option>
+                                                    </select> -->
+                                                    <div class="domain_overview_btn" id="domain_overview_btn">
+                                                        <button type="submit" class="btn"
+                                                            name="domain_overview">Search</button>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    {% if data %}
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="site_audit_das">
+                                                    <h5>SEO <i class="fad fa-globe-americas"></i></h5>
+                                                    <div class="prgress-section">
+                                                        <div class="prgress-box">
+                                                            <div class="prgress-box-wrap">
+                                                                
+                                                               
+                                                                <span class="label  {% if seo > 0 and seo <= 40 %} progress-red {% elif seo > 40 and seo <= 70 %} progress-medium  {% elif seo > 70 and seo <= 100 %} progress-full {% endif %}" style="width: {{ seo }}%;"></span>
+                                                            </div>
+                                                            <span>{{ seo }}%</span>
+                                                        </div>
+                                                    </div>
+                                                    <p>{{seo_description}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="site_audit_das">
+                                                    <h5>Accessibility <i class="fad fa-globe-americas"></i></h5>
+                                                    <div class="prgress-section">
+                                                        <div class="prgress-box">
+                                                            <div class="prgress-box-wrap">
+                                                                <span class="label {% if accessibility > 0 and accessibility <= 40 %} progress-red {% elif accessibility > 40 and accessibility <= 70 %} progress-medium  {% elif accessibility > 70 and accessibility <= 100 %} progress-full {% endif %}" style="width: {{ accessibility }}%;"></span>
+                                                            </div>
+                                                            <span>{{ accessibility }}%</span>
+                                                        </div>
+                                                    </div>
+                                                    <p>{{accessibility_description}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="site_audit_das">
+                                                    <h5>Performance <i class="fad fa-globe-americas"></i></h5>
+                                                    <div class="prgress-section">
+                                                        <div class="prgress-box">
+                                                            <div class="prgress-box-wrap">
+                                                                <span class="label {% if performance > 0 and performance <= 40 %} progress-red {% elif performance > 40 and performance <= 70 %} progress-medium  {% elif performance > 70 and performance <= 100 %} progress-full {% endif %}" style="width: {{ performance }}%;"></span>
+                                                            </div>
+                                                            <span>{{ performance }}%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="site_audit_das">
+                                                    <h5>Best Practices <i class="fad fa-globe-americas"></i></h5>
+                                                    <div class="prgress-section">
+                                                        <div class="prgress-box">
+                                                            <div class="prgress-box-wrap">
+                                                                <span class="label {% if best_practices > 0 and best_practices <= 40 %} progress-red {% elif best_practices > 40 and best_practices <= 70 %} progress-medium  {% elif best_practices > 70 and best_practices <= 100 %} progress-full {% endif %}" style="width: {{ best_practices }}%;"></span>
+                                                            </div>
+                                                            <span>{{ best_practices }}%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="domain_overview_data_progress">
+                                            <div class="domain_overview_progress_box">
+                                                <h6>SEO <i class="fad fa-globe-americas"></i></h6>
+                                                <div class="charts-container">
+                                                    <div class="pie-wrapper progress-95 style-2">
+                                                        <span class="label">{{ seo }}<span
+                                                                class="smaller">%</span></span>
+                                                        <div class="pie">
+                                                            <div class="left-side half-circle"></div>
+                                                            <div class="right-side half-circle"></div>
+                                                        </div>
+                                                        <div class="shadow"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="domain_sub_value">
+                                                    <p>{{seo_description}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="domain_overview_progress_box red">
+                                                <h6>Accessibility<i class="fad fa-globe-americas"></i></h6>
+                                                <div class="charts-container">
+                                                    <div class="pie-wrapper progress-95 style-2">
+                                                        <span class="label">{{ accessibility }}<span
+                                                                class="smaller">%</span></span>
+                                                        <div class="pie">
+                                                            <div class="left-side half-circle"></div>
+                                                            <div class="right-side half-circle"></div>
+                                                        </div>
+                                                        <div class="shadow"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="domain_sub_value">
+                                                    <p>{{accessibility_description}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="domain_overview_progress_box yellow">
+                                                <h6>Performance <i class="fad fa-globe-americas"></i></h6>
+                                                <div class="charts-container">
+                                                    <div class="pie-wrapper progress-95 style-2">
+                                                        <span class="label">{{ performance }}<span
+                                                                class="smaller">%</span></span>
+                                                        <div class="pie">
+                                                            <div class="left-side half-circle"></div>
+                                                            <div class="right-side half-circle"></div>
+                                                        </div>
+                                                        <div class="shadow"></div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="domain_overview_progress_box">
+                                                <h6>Best Practices <i class="fad fa-globe-americas"></i></h6>
+                                                <div class="charts-container">
+                                                    <div class="pie-wrapper progress-95 style-2">
+                                                        <span class="label">{{best_practices}}<span
+                                                                class="smaller">%</span></span>
+                                                        <div class="pie">
+                                                            <div class="left-side half-circle"></div>
+                                                            <div class="right-side half-circle"></div>
+                                                        </div>
+                                                        <div class="shadow"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    {% endif %}
+                                    <div class="col-lg-12">
+                                        <div class="seo_tool_loder_wrp">
+                                            <div class="seo_tool_web_loader">
+                                                <div class="loader" id="seo_loader" style="display: none;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="site_audit">
+                                <div class="row">
+
+                                    <div class="col-lg-8 mx-auto text-center">
+                                        <div class="site_audit_data_wrp">
+                                            <div class="site_audit_title">
+                                                <h1>Site Audit</h1>
+                                            </div>
+                                            <div class="site_audit_input_search">
+                                                <form method="post" action="" onsubmit="audit_loader()">
+                                                    {% csrf_token %}
+                                                    <div class="input-group mb-3"> <input type="text"
+                                                            name="search_audit" class="form-control input-text"
+                                                            placeholder="Search products...."
+                                                            aria-label="Recipient's username"
+                                                            aria-describedby="basic-addon2">
+                                                        <div class="input-group-append"> <button
+                                                                class="btn btn-outline-warning btn-lg" type="submit"
+                                                                name="btn_audit"><i
+                                                                    class="fa fa-search"></i>Search</button> </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="seo_tool_loder_wrp">
+                                            <div class="seo_tool_web_loader">
+                                                <div class="loader" id="audit_loader" style="display: none;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   {% if data1 %}
+                                   <div class="dashboard_search">
+                                    <div class="container justify-content-center">
+                                        <div class="row">
+
+                                            <div class="site_audit_wrp">
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>Redirects</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if redirects.redirects_http_score > 0 and redirects.redirects_http_score <= 40 %} progress-red {% elif redirects.redirects_http_score > 40 and redirects.redirects_http_score <= 70 %} progress-medium  {% elif redirects.redirects_http_score > 70 and redirects.redirects_http_score <= 100 %} progress-full {% endif %}" style="width: {{redirects.redirects_http_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{redirects.redirects_http_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{redirects.redirects_http_title}}</h6>
+                                                            <p>{{redirects.redirects_http_desc}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>Service</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if service.service_worker_score > 0 and service.service_worker_score <= 40 %} progress-red {% elif service.service_worker_score > 40 and service.service_worker_score <= 70 %} progress-medium  {% elif service.service_worker_score > 70 and service.service_worker_score <= 100 %} progress-full {% endif %}" style="width: {{service.service_worker_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{service.service_worker_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{service.service_worker_title}}</h6>
+                                                            <p>{{service.service_worker_desc}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>View Port</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if viewport.viewport_score > 0 and viewport.viewport_score <= 40 %} progress-red {% elif viewport.viewport_score > 40 and viewport.viewport_score <= 70 %} progress-medium  {% elif viewport.viewport_score > 70 and viewport.viewport_score <= 100 %} progress-full {% endif %}" style="width: {{viewport.viewport_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{viewport.viewport_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{viewport.viewport_title}}</h6>
+                                                            <p>{{viewport.viewport_desc}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>First Contentful Paint</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if first_contentful_paint.first_contentful_paint_score > 0 and first_contentful_paint.first_contentful_paint_score <= 40 %} progress-red {% elif first_contentful_paint.first_contentful_paint_score > 40 and first_contentful_paint.first_contentful_paint_score <= 70 %} progress-medium  {% elif first_contentful_paint.first_contentful_paint_score > 70 and first_contentful_paint.first_contentful_paint_score <= 100 %} progress-full {% endif %}" style="width: {{first_contentful_paint.first_contentful_paint_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{first_contentful_paint.first_contentful_paint_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{first_contentful_paint.first_contentful_paint_title}}
+                                                            </h6>
+                                                            <p>{{first_contentful_paint.first_contentful_paint_desc}}
+                                                            </p>
+                                                            <span class="time-box"> <i class="fal fa-clock"></i>
+                                                                {{first_contentful_paint.first_contentful_paint_display_time}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>Largest Contentful Paint</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if largest_contentful_paint.largest_contentful_paint_score > 0 and largest_contentful_paint.largest_contentful_paint_score <= 40 %} progress-red {% elif largest_contentful_paint.largest_contentful_paint_score > 40 and largest_contentful_paint.largest_contentful_paint_score <= 70 %} progress-medium  {% elif largest_contentful_paint.largest_contentful_paint_score > 70 and largest_contentful_paint.largest_contentful_paint_score <= 100 %} progress-full {% endif %}" style="width: {{largest_contentful_paint.largest_contentful_paint_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{largest_contentful_paint.largest_contentful_paint_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{largest_contentful_paint.largest_contentful_paint_title}}
+                                                            </h6>
+                                                            <p>{{largest_contentful_paint.largest_contentful_paint_desc}}
+                                                            </p>
+                                                            <span class="time-box"> <i class="fal fa-clock"></i>
+                                                                {{largest_contentful_paint.largest_contentful_paint_display_time}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>Speed Index</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if speed_index.speed_index_score > 0 and speed_index.speed_index_score <= 40 %} progress-red {% elif speed_index.speed_index_score > 40 and speed_index.speed_index_score <= 70 %} progress-medium  {% elif speed_index.speed_index_score > 70 and speed_index.speed_index_score <= 100 %} progress-full {% endif %}" style="width: {{speed_index.speed_index_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{speed_index.speed_index_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{speed_index.speed_index_title}}</h6>
+                                                            <p>{{speed_index.speed_index_desc}}</p>
+                                                            <span class="time-box"> <i class="fal fa-clock"></i>
+                                                                {{speed_index.speed_index_display_time}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>Total Blocking Time</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if total_blocking_time.total_blocking_time_score > 0 and total_blocking_time.total_blocking_time_score <= 40 %} progress-red {% elif total_blocking_time.total_blocking_time_score > 40 and total_blocking_time.total_blocking_time_score <= 70 %} progress-medium  {% elif total_blocking_time.total_blocking_time_score > 70 and total_blocking_time.total_blocking_time_score <= 100 %} progress-full {% endif %}" style="width: {{total_blocking_time.total_blocking_time_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{total_blocking_time.total_blocking_time_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{total_blocking_time.total_blocking_time_title}}</h6>
+                                                            <p>{{total_blocking_time.total_blocking_time_desc}}</p>
+                                                            <span class="time-box"> <i class="fal fa-clock"></i>
+                                                                {{total_blocking_time.total_blocking_time_time}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>Error in console</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if errors_in_console.errors_in_console_score > 0 and errors_in_console.errors_in_console_score <= 40 %} progress-red {% elif errors_in_console.errors_in_console_score > 40 and errors_in_console.errors_in_console_score <= 70 %} progress-medium  {% elif errors_in_console.errors_in_console_score > 70 and errors_in_console.errors_in_console_score <= 100 %} progress-full {% endif %}" style="width: {{errors_in_console.errors_in_console_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{errors_in_console.errors_in_console_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{errors_in_console.errors_in_console_title}}</h6>
+                                                            <p>{{errors_in_console.errors_in_console_desc}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>Server Response Time</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if server_response_time.server_response_time_score > 0 and server_response_time.server_response_time_score <= 40 %} progress-red {% elif server_response_time.server_response_time_score > 40 and server_response_time.server_response_time_score <= 70 %} progress-medium  {% elif server_response_time.server_response_time_score > 70 and server_response_time.server_response_time_score <= 100 %} progress-full {% endif %}" style="width: {{server_response_time.server_response_time_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{server_response_time.server_response_time_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{server_response_time.server_response_time_title}}
+                                                            </h6>
+                                                            <p>{{server_response_time.server_response_time_desc}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="site_audit_das">
+                                                            <h5>Redirects</h5>
+                                                            <div class="prgress-section">
+                                                                <div class="prgress-box">
+                                                                    <div class="prgress-box-wrap">
+                                                                        <span class="label {% if redirects_overall.redirects_score > 0 and redirects_overall.redirects_score <= 40 %} progress-red {% elif redirects_overall.redirects_score > 40 and redirects_overall.redirects_score <= 70 %} progress-medium  {% elif redirects_overall.redirects_score > 70 and redirects_overall.redirects_score <= 100 %} progress-full {% endif %}" style="width: {{redirects_overall.redirects_score}}%;"></span>
+                                                                    </div>
+                                                                    <span>{{redirects_overall.redirects_score}}%</span>
+                                                                </div>
+                                                            </div>
+                                                            <h6>{{redirects_overall.redirects_title}}</h6>
+                                                            <p>{{redirects_overall.redirects_desc}}</p>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>
+
+{% endblock %}
+
+{% block script %}
+<script>
+    function loader() {
+
+        document.getElementById("seo_loader").style.display = "block";
+        return true
+    }
+    function audit_loader() {
+
+        document.getElementById("audit_loader").style.display = "block";
+        return true
+    }
+
+</script>
+
+{% endblock %}
