@@ -1,3 +1,4 @@
+from django.http.response import JsonResponse
 from django.shortcuts import redirect, render, HttpResponse
 from django.contrib.auth import get_user_model, login, authenticate, logout, update_session_auth_hash
 from django.contrib import messages
@@ -17,6 +18,14 @@ from datetime import datetime
 import time
 import json
 from django.conf import settings
+from binance.client import Client
+
+from unicorn_binance_websocket_api.unicorn_binance_websocket_api_manager import BinanceWebSocketApiManager
+
+api_key = "Bs0hCk8zsE6IteGIyXLPVBGEnYGhcBTjjWJfVMKSZFU5YSwiAMhx2rc1ICRcWkOa"
+api_secret = "D8UdEhDFB61BSH09Kuqlrt2IAjGKPJ0I2Ok2JGzwenUCOHskQmRSqMdh3WWtaTvJ"
+client = Client(api_key, api_secret)
+
 # Create your views here.
 User = get_user_model()
 
@@ -67,10 +76,53 @@ def loginProcess(request):
     return render(request, "login.html")
 
 
+from time import sleep
+from binance import ThreadedWebsocketManager
+
+btc_price = {'error':False}
+def btc_trade_history(msg):
+    ''' define how to process incoming WebSocket messages '''
+    if msg['e'] != 'error':
+        print(msg['c'])
+        btc_price['last'] = msg['c']
+        btc_price['bid'] = msg['b']
+        btc_price['last'] = msg['a']
+        btc_price['error'] = False
+    else:
+        btc_price['error'] = True
+
 def dashboard(request):
     if request.user.is_authenticated:
-        pass
+        bsm = ThreadedWebsocketManager()
+        bsm.start()
+        bsm.start_symbol_ticker_socket(callback=btc_trade_history, symbol='BTCUSDT')
+        bsm.stop()
         # Refer https://algotrading101.com/learn/binance-python-api-guide/ for binance live data
+        # Refer https://marketstack.com/documentation for Stocks live streaming
+
+
+ubwa = BinanceWebSocketApiManager(exchange="binance.com")
+ubwa.create_stream(['trade'], ['btcusdt'], output="UnicornFy")
+
+def get_latest_btc(request):
+    # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
+    oldest_data_from_stream_buffer = ubwa.pop_stream_data_from_stream_buffer()
+    import time
+    print(oldest_data_from_stream_buffer)
+    return JsonResponse(oldest_data_from_stream_buffer,safe=False)
+
+
+ethbtc = BinanceWebSocketApiManager(exchange="binance.com")
+ethbtc.create_stream(['trade'], ['ethusdt'], output="UnicornFy")
+
+def get_latest_eth(request):
+
+    # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
+    oldest_data_from_stream = ethbtc.pop_stream_data_from_stream_buffer()
+    import time
+    print(oldest_data_from_stream)
+    return JsonResponse(oldest_data_from_stream,safe=False)
+
 
 
 def updatepassword(request):

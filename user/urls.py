@@ -9,7 +9,7 @@ urlpatterns = [
     path('updatepassword', updatepassword, name='updatepassword'),
     path('forgetpassword', forgetpassword, name='forgetpassword'),
     path('confirmforgotPassword/<uidb64>/<token>/',confirmforgotPassword,name="confirmforgotPassword"),
-    path('confirmforgotPasswordForm',confirmforgotPasswordForm,name="confirmforgotPasswordForm")
-
-
+    path('confirmforgotPasswordForm',confirmforgotPasswordForm,name="confirmforgotPasswordForm"),
+    path('btc_data/',get_latest_btc),
+    path('eth_data/',get_latest_eth),
 ]
