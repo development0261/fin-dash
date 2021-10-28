@@ -1,619 +1,1084 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block style %}
+
+<style>
+    nav.navbar {
+        width: fit-content;
+    }
+
+    .main-header-left {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        z-index: 99999;
+    }
+
+    .jctkr-wrapper.jctkr-initialized ul {
+        display: flex;
+    }
+</style>
 
 {% endblock %}
 
 
 {% block content %}
-<main>
-    <div class="web_deshboard d-flex">
-        <div class="sidebar_wrp">
-            <div class="sidebar_data flex-shrink-0 p-3" style="width: 280px;">
-                <ul class="list-unstyled ps-0">
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#seo-collapse" aria-expanded="false">
-                            SEO</button>
-                        <div class="collapse" id="seo-collapse">
-                            <div class="sub_menu_wrp">
-                                <div class="submenu_item"><a href="#">SEO Dashboard</a></div>
-                                <div class="submenu_item_title">
-                                    <span>COMPETITIVE RESEARCH</span>
-                                </div>
-                                <ul class="submenu_link">
-                                    <li> <a href="#domainOverview"> Domain Overview</a></li>
-
-                                    <li> <a href="#trafficAnalytics">Traffic Analytics</a></li>
-                                    <li> <a href="#">Organic Research</a></li>
-                                    <li> <a href="#">Keyword Gap</a></li>
-                                    <li> <a href="#">Backlink Gap</a></li>
-                                </ul>
-                            </div>
-                            <div class="sub_menu_wrp">
-                                <div class="submenu_item_title">
-                                    <span>KEYWORD RESEARCH</span>
-                                </div>
-                                <ul class="submenu_link">
-                                    <li><a href="#"> Keyword Overview</a></li>
-                                    <li><a href="#">Keyword Magic Tool</a></li>
-                                    <li><a href="#">Keyword Manager</a></li>
-                                    <li><a href="#">Position Tracking</a></li>
-                                    <li><a href="#">Organic Traffic Insights</a></li>
-                                </ul>
-                            </div>
-                            <div class="sub_menu_wrp">
-                                <div class="submenu_item_title">
-                                    <span>LINK BUILDING</span>
-                                </div>
-                                <ul class="submenu_link">
-                                    <li><a href="#">Backlink Analytics</a></li>
-                                    <li><a href="#">Backlink Audit</a></li>
-                                    <li><a href="#">Link Building Tool</a></li>
-                                    <li><a href="#">Bulk Analysis</a></li>
-
-                                </ul>
-                            </div>
-                            <div class="sub_menu_wrp">
-                                <div class="submenu_item_title">
-                                    <span>ON PAGE & TECH SEO</span>
-                                </div>
-                                <ul class="submenu_link">
-                                    <li><a href="#site_audit">Site Audit</a></li>
-                                    <li><a href="#">Listing Management</a></li>
-                                    <li><a href="#">SEO Content Template</a></li>
-                                    <li><a href="#">On Page SEO Checker</a></li>
-                                    <li><a href="#">Log File Analyzer</a></li>
-
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#local-collapse" aria-expanded="false">
-                            Local SEO
-                        </button>
-                        <div class="collapse" id="local-collapse">
-                            <div class="sub_menu_wrp">
-                                <ul class="submenu_link">
-                                    <li><a href="#">Listing Management</a></li>
-                                    <li><a href="#">Position Tracking</a></li>
-                                    <li><a href="#">Site Audit</a></li>
-                                    <li><a href="#">On Page SEO Checker</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#advertising-collapse" aria-expanded="false">
-                            Advertising
-                        </button>
-                        <div class="collapse" id="advertising-collapse">
-                            <div class="sub_menu_wrp">
-                                <div class="submenu_item"><a href="#">Advertising Dashboard</a></div>
-                                <div class="submenu_item_title">
-                                    <span>Market Analysis</span>
-                                </div>
-                                <ul class="submenu_link">
-                                    <li> <a href="#">Domain Overview</a></li>
-                                    <li> <a href="#">Advertising Research</a></li>
-                                    <li> <a href="#">Display Advertising</a></li>
-                                    <li> <a href="#">PLA Research</a></li>
-                                </ul>
-                            </div>
-                            <div class="sub_menu_wrp">
-                                <div class="submenu_item_title">
-                                    <span>KEYWORD RESEARCH</span>
-                                </div>
-                                <ul class="submenu_link">
-                                    <li><a href="#"> Keyword Overview</a></li>
-                                    <li><a href="#">Keyword Magic Tool</a></li>
-                                    <li><a href="#">Keyword Manager</a></li>
-                                    <li><a href="#">Position Tracking</a></li>
-                                    <li><a href="#">Organic Traffic Insights</a></li>
-                                </ul>
-                            </div>
-                            <div class="sub_menu_wrp">
-                                <div class="submenu_item_title">
-                                    <span>LINK BUILDING</span>
-                                </div>
-                                <ul class="submenu_link">
-                                    <li><a href="#">Backlink Analytics</a></li>
-                                    <li><a href="#">Backlink Audit</a></li>
-                                    <li><a href="#">Link Building Tool</a></li>
-                                    <li><a href="#">Bulk Analysis</a></li>
-
-                                </ul>
-                            </div>
-                            <div class="sub_menu_wrp">
-                                <div class="submenu_item_title">
-                                    <span>ON PAGE & TECH SEO</span>
-                                </div>
-                                <ul class="submenu_link">
-                                    <li><a href="#">Site Audit</a></li>
-                                    <li><a href="#">Listing Management</a></li>
-                                    <li><a href="#">SEO Content Template</a></li>
-                                    <li><a href="#">On Page SEO Checker</a></li>
-                                    <li><a href="#">Log File Analyzer</a></li>
-
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#orders-collapse" aria-expanded="false">
-                            Social Media
-                        </button>
-                        <div class="collapse" id="orders-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="#">New</a></li>
-                                <li><a href="#">Processed</a></li>
-                                <li><a href="#">Shipped</a></li>
-                                <li><a href="#">Returned</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#orders-collapse" aria-expanded="false">
-                            Content Marketing
-                        </button>
-                        <div class="collapse" id="orders-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="#">New</a></li>
-                                <li><a href="#">Processed</a></li>
-                                <li><a href="#">Shipped</a></li>
-                                <li><a href="#">Returned</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#orders-collapse" aria-expanded="false">
-                            Competitive Research
-                        </button>
-                        <div class="collapse" id="orders-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="#">New</a></li>
-                                <li><a href="#">Processed</a></li>
-                                <li><a href="#">Shipped</a></li>
-                                <li><a href="#">Returned</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#orders-collapse" aria-expanded="false">
-                            Agency Solutions
-                        </button>
-                        <div class="collapse" id="orders-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="#">New</a></li>
-                                <li><a href="#">Processed</a></li>
-                                <li><a href="#">Shipped</a></li>
-                                <li><a href="#">Returned</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
+<!-- main-header -->
+<div class="main-header  side-header nav nav-item">
+    <div class="container-fluid">
+        <div class="main-header-left ">
+            <!-- <div class="app-sidebar__toggle mobile-toggle" data-toggle="sidebar">
+                <a class="open-toggle" href="#"><i class="header-icons" data-eva="menu-outline"></i></a>
+                <a class="close-toggle" href="#"><i class="header-icons" data-eva="close-outline"></i></a>
+            </div> -->
+            <div class="main-header-center ml-3 d-sm-none d-md-none d-lg-block">
+                <input type="search" class="form-control" placeholder="Search for anything...">
+                <button class="btn"><i class="fas fa-search"></i></button>
             </div>
         </div>
-        <div class="dashboard_data_wrp">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="target">
-                            <div id="domainOverview">
-
-                                <div class="row">
-                                    <div class="col-lg-8 mx-auto text-center">
-                                        <div class="domain_overview_data">
-                                            <div class="overview_title">
-                                                <h1>Domain Overview</h1>
-                                            </div>
-                                            <div class="domain_overview_sub_title">
-                                                <p>Get instant insights into strengths and weaknesses
-                                                    of your competitor or prospective customer.</p>
-                                            </div>
-                                            <div class="domain_overview_input_select">
-                                                <form action="" method="post" onsubmit="loader()">
-                                                    {% csrf_token %}
-                                                    <input type="url" name="url_name" class="form-control" id=""
-                                                        aria-describedby="">
-
-                                                    <!-- <select class="form-select form-select-sm"
-                                                        aria-label=".form-select-sm example">
-                                                        <option value="Afghanistan">Afghanistan</option>
-                                                        <option value="Albania">Albania</option>
-                                                        <option value="Algeria">Algeria</option>
-                                                    </select> -->
-                                                    <div class="domain_overview_btn" id="domain_overview_btn">
-                                                        <button type="submit" class="btn"
-                                                            name="domain_overview">Search</button>
-                                                    </div>
-                                                </form>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    {% if data %}
-                                    <div class="col-lg-12">
-                                        <div class="row">
-                                            <div class="col-lg-3">
-                                                <div class="site_audit_das">
-                                                    <h5>SEO <i class="fad fa-globe-americas"></i></h5>
-                                                    <div class="prgress-section">
-                                                        <div class="prgress-box">
-                                                            <div class="prgress-box-wrap">
-                                                                
-                                                               
-                                                                <span class="label  {% if seo > 0 and seo <= 40 %} progress-red {% elif seo > 40 and seo <= 70 %} progress-medium  {% elif seo > 70 and seo <= 100 %} progress-full {% endif %}" style="width: {{ seo }}%;"></span>
-                                                            </div>
-                                                            <span>{{ seo }}%</span>
-                                                        </div>
-                                                    </div>
-                                                    <p>{{seo_description}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <div class="site_audit_das">
-                                                    <h5>Accessibility <i class="fad fa-globe-americas"></i></h5>
-                                                    <div class="prgress-section">
-                                                        <div class="prgress-box">
-                                                            <div class="prgress-box-wrap">
-                                                                <span class="label {% if accessibility > 0 and accessibility <= 40 %} progress-red {% elif accessibility > 40 and accessibility <= 70 %} progress-medium  {% elif accessibility > 70 and accessibility <= 100 %} progress-full {% endif %}" style="width: {{ accessibility }}%;"></span>
-                                                            </div>
-                                                            <span>{{ accessibility }}%</span>
-                                                        </div>
-                                                    </div>
-                                                    <p>{{accessibility_description}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <div class="site_audit_das">
-                                                    <h5>Performance <i class="fad fa-globe-americas"></i></h5>
-                                                    <div class="prgress-section">
-                                                        <div class="prgress-box">
-                                                            <div class="prgress-box-wrap">
-                                                                <span class="label {% if performance > 0 and performance <= 40 %} progress-red {% elif performance > 40 and performance <= 70 %} progress-medium  {% elif performance > 70 and performance <= 100 %} progress-full {% endif %}" style="width: {{ performance }}%;"></span>
-                                                            </div>
-                                                            <span>{{ performance }}%</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <div class="site_audit_das">
-                                                    <h5>Best Practices <i class="fad fa-globe-americas"></i></h5>
-                                                    <div class="prgress-section">
-                                                        <div class="prgress-box">
-                                                            <div class="prgress-box-wrap">
-                                                                <span class="label {% if best_practices > 0 and best_practices <= 40 %} progress-red {% elif best_practices > 40 and best_practices <= 70 %} progress-medium  {% elif best_practices > 70 and best_practices <= 100 %} progress-full {% endif %}" style="width: {{ best_practices }}%;"></span>
-                                                            </div>
-                                                            <span>{{ best_practices }}%</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- <div class="domain_overview_data_progress">
-                                            <div class="domain_overview_progress_box">
-                                                <h6>SEO <i class="fad fa-globe-americas"></i></h6>
-                                                <div class="charts-container">
-                                                    <div class="pie-wrapper progress-95 style-2">
-                                                        <span class="label">{{ seo }}<span
-                                                                class="smaller">%</span></span>
-                                                        <div class="pie">
-                                                            <div class="left-side half-circle"></div>
-                                                            <div class="right-side half-circle"></div>
-                                                        </div>
-                                                        <div class="shadow"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="domain_sub_value">
-                                                    <p>{{seo_description}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="domain_overview_progress_box red">
-                                                <h6>Accessibility<i class="fad fa-globe-americas"></i></h6>
-                                                <div class="charts-container">
-                                                    <div class="pie-wrapper progress-95 style-2">
-                                                        <span class="label">{{ accessibility }}<span
-                                                                class="smaller">%</span></span>
-                                                        <div class="pie">
-                                                            <div class="left-side half-circle"></div>
-                                                            <div class="right-side half-circle"></div>
-                                                        </div>
-                                                        <div class="shadow"></div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="domain_sub_value">
-                                                    <p>{{accessibility_description}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="domain_overview_progress_box yellow">
-                                                <h6>Performance <i class="fad fa-globe-americas"></i></h6>
-                                                <div class="charts-container">
-                                                    <div class="pie-wrapper progress-95 style-2">
-                                                        <span class="label">{{ performance }}<span
-                                                                class="smaller">%</span></span>
-                                                        <div class="pie">
-                                                            <div class="left-side half-circle"></div>
-                                                            <div class="right-side half-circle"></div>
-                                                        </div>
-                                                        <div class="shadow"></div>
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-                                            <div class="domain_overview_progress_box">
-                                                <h6>Best Practices <i class="fad fa-globe-americas"></i></h6>
-                                                <div class="charts-container">
-                                                    <div class="pie-wrapper progress-95 style-2">
-                                                        <span class="label">{{best_practices}}<span
-                                                                class="smaller">%</span></span>
-                                                        <div class="pie">
-                                                            <div class="left-side half-circle"></div>
-                                                            <div class="right-side half-circle"></div>
-                                                        </div>
-                                                        <div class="shadow"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> -->
-                                    </div>
-                                    {% endif %}
-                                    <div class="col-lg-12">
-                                        <div class="seo_tool_loder_wrp">
-                                            <div class="seo_tool_web_loader">
-                                                <div class="loader" id="seo_loader" style="display: none;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+        <div class="main-header-center">
+            <div class="responsive-logo">
+                <a href="index.html"><img src="../../assets/img/brand/logo-theme-dark.png" class="mobile-logo"
+                        alt="logo"></a>
+            </div>
+        </div>
+        <!-- <div class="main-header-right">
+            <div class="nav nav-item  navbar-nav-right ml-auto">
+                <form class="navbar-form nav-item my-auto d-lg-none" role="search">
+                    <div class="input-group nav-item my-auto">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+                            <button type="reset" class="btn btn-default">
+                                <i class="ti-close"></i>
+                            </button>
+                            <button class="btn btn-default nav-link">
+                                <i class="ti-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+                <div class="nav-item full-screen fullscreen-button">
+                    <a class="new nav-link full-screen-link" href="#"><i class="ti-fullscreen"></i></span></a>
+                </div>
+                <div class="dropdown  nav-item main-header-message ">
+                    <a class="new nav-link" href="#" ><i class="ti-email"></i><span class="pulse-danger"></span></a>
+                    <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp ">
+                        <div class="main-dropdown-header  d-sm-none">
+                            <a class="main-header-arrow" href=""><i class="icon ion-md-arrow-back"></i></a>
+                        </div>
+                        <div class="menu-header-content text-left d-flex">
+                            <div class="">
+                                <h6 class="menu-header-title text-white mb-0">5 new Messages</h6>
                             </div>
-                            <div id="site_audit">
+                            <div class="my-auto ml-auto">
+                                <span class="badge badge-pill badge-warning float-right">Mark All Read</span>
+                            </div>
+                        </div>
+                        <div class="main-message-list chat-scroll">
+                            <a href="#" class="p-3 d-flex border-bottom">
+                                <div class="  drop-img  cover-image  " data-image-src="../../assets/img/faces/3.jpg">
+                                    <span class="avatar-status bg-teal"></span>
+                                </div>
+
+                                <div class="wd-90p">
+                                    <div class="d-flex">
+                                        <h5 class="mb-1 name">Paul Molive</h5>
+                                        <p class="time mb-0 text-right ml-auto float-right">10 min ago</p>
+                                    </div>
+                                    <p class="mb-0 desc">I'm sorry but i'm not sure how...</p>
+                                </div>
+                            </a>
+                            <a href="#" class="p-3 d-flex border-bottom">
+                                <div class="drop-img cover-image" data-image-src="../../assets/img/faces/2.jpg">
+                                    <span class="avatar-status bg-teal"></span>
+                                </div>
+                                <div class="wd-90p">
+                                    <div class="d-flex">
+                                        <h5 class="mb-1 name">Sahar Dary</h5>
+                                        <p class="time mb-0 text-right ml-auto float-right">13 min ago</p>
+                                    </div>
+                                    <p class="mb-0 desc">All set ! Now, time to get to you now......</p>
+                                </div>
+                            </a>
+                            <a href="#" class="p-3 d-flex border-bottom">
+                                <div class="drop-img cover-image" data-image-src="../../assets/img/faces/9.jpg">
+                                    <span class="avatar-status bg-teal"></span>
+                                </div>
+                                <div class="wd-90p">
+                                    <div class="d-flex">
+                                        <h5 class="mb-1 name">Khadija Mehr</h5>
+                                        <p class="time mb-0 text-right ml-auto float-right">20 min ago</p>
+                                    </div>
+                                    <p class="mb-0 desc">Are you ready to pickup your Delivery...</p>
+                                </div>
+                            </a>
+                            <a href="#" class="p-3 d-flex border-bottom">
+                                <div class="drop-img cover-image" data-image-src="../../assets/img/faces/12.jpg">
+                                    <span class="avatar-status bg-danger"></span>
+                                </div>
+                                <div class="wd-90p">
+                                    <div class="d-flex">
+                                        <h5 class="mb-1 name">Barney Cull</h5>
+                                        <p class="time mb-0 text-right ml-auto float-right">30 min ago</p>
+                                    </div>
+                                    <p class="mb-0 desc">Here are some products ...</p>
+                                </div>
+                            </a>
+                            <a href="#" class="p-3 d-flex border-bottom">
+                                <div class="drop-img cover-image" data-image-src="../../assets/img/faces/5.jpg">
+                                    <span class="avatar-status bg-teal"></span>
+                                </div>
+                                <div class="wd-90p">
+                                    <div class="d-flex">
+                                        <h5 class="mb-1 name">Petey Cruiser</h5>
+                                        <p class="time mb-0 text-right ml-auto float-right">35 min ago</p>
+                                    </div>
+                                    <p class="mb-0 desc">I'm sorry but i'm not sure how...</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="text-center dropdown-footer">
+                            <a href="text-center">VIEW ALL</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown nav-item main-header-notification">
+                    <a class="new nav-link " href="#"><i class="ti-bell animated bell-animations"></i><span class=" pulse"></span></a>
+                    <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
+                        <div class="menu-header-content text-left d-flex">
+                            <div class="">
+                                <h6 class="menu-header-title text-white mb-0">7 new Notifications</h6>
+                            </div>
+                            <div class="my-auto ml-auto">
+                                <span class="badge badge-pill badge-warning float-right">Mark All Read</span>
+                            </div>
+                        </div>
+                        <div class="main-notification-list Notification-scroll">
+                            <a href="#" class="d-flex  p-3 border-bottom ">
+                                <div class="notifyimg bg-success-transparent">
+                                    <i class="la la-shopping-basket text-success"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">New Order Received</h5>
+                                    <div class="notification-subtext">1 hour ago</div>
+                                </div>
+                                <div class="ml-auto" >
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                            <a href="#" class="d-flex p-3 border-bottom">
+                                <div class="notifyimg bg-danger-transparent">
+                                    <i class="la la-user-check text-danger"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">22 verified registrations</h5>
+                                    <div class="notification-subtext">2 hour ago</div>
+                                </div>
+                                <div class="ml-auto" >
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                            <a href="#" class="d-flex p-3 border-bottom">
+                                   <div class="notifyimg bg-primary-transparent">
+                                    <i class="la la-check-circle text-primary"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">Project has been approved</h5>
+                                    <div class="notification-subtext">4 hour ago</div>
+                                </div>
+                                <div class="ml-auto" >
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                            <a href="#" class="d-flex p-3 border-bottom">
+                                <div class="notifyimg bg-pink-transparent">
+                                    <i class="la la-file-alt text-pink"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">New files available</h5>
+                                    <div class="notification-subtext">10 hour ago</div>
+                                </div>
+                                <div class="ml-auto" >
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                            <a href="#" class="d-flex p-3 border-bottom">
+                                <div class="notifyimg bg-warning-transparent">
+                                    <i class="la la-envelope-open text-warning"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">New review received</h5>
+                                    <div class="notification-subtext">1 day ago</div>
+                                </div>
+                                <div class="ml-auto" >
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                            <a href="#"  class="d-flex p-3">
+                                 <div class="notifyimg bg-purple-transparent">
+                                    <i class="la la-gem text-purple"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">Updates Available</h5>
+                                    <div class="notification-subtext">2 days ago</div>
+                                </div>
+                                <div class="ml-auto" >
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="dropdown-footer">
+                            <a href="">VIEW ALL</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="navbar-toggler navresponsive-toggler d-sm-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
+                    aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fe fe-more-vertical "></span>
+                </button>
+                <div class="dropdown main-profile-menu nav nav-item nav-link">
+                    <a class="profile-user" href=""><img alt="" src="../../assets/img/faces/5.jpg"></a>
+                    <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
+                        <div class="main-header-profile header-img">
+                            <div class="main-img-user"><img alt="" src="../../assets/img/faces/5.jpg"></div>
+                            <h6>Elizabeth Jane</h6><span>Premium Member</span>
+                        </div>
+                        <a class="dropdown-item" href=""><i class="far fa-user"></i> My Profile</a>
+                        <a class="dropdown-item" href=""><i class="far fa-edit"></i> Edit Profile</a>
+                        <a class="dropdown-item" href=""><i class="far fa-clock"></i> Activity Logs</a>
+                        <a class="dropdown-item" href=""><i class="fas fa-sliders-h"></i> Account Settings</a>
+                        <a class="dropdown-item" href="page-signin.html"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                    </div>
+                </div>
+                <div class="dropdown main-header-message right-toggle">
+                    <a class="nav-link " data-toggle="sidebar-right" data-target=".sidebar-right">
+                        <i class="ti-menu tx-20 bg-transparent"></i>
+                    </a>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
+<!--/main-header -->
+
+<!-- mobile-header -->
+<div class="responsive main-header">
+    <div class="mb-1 navbar navbar-expand-lg  nav nav-item  navbar-nav-right responsive-navbar navbar-dark d-sm-none ">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+            <div class="d-flex order-lg-2 ml-auto">
+                <form class="navbar-form nav-item my-auto d-lg-none" role="search">
+                    <div class="input-group nav-item my-auto">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+                            <button type="reset" class="btn btn-default">
+                                <i class="ti-close"></i>
+                            </button>
+                            <button class="btn btn-default nav-link">
+                                <i class="ti-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+                <div class="d-md-flex">
+                    <div class="nav-item full-screen fullscreen-button">
+                        <a class="new nav-link full-screen-link" href="#"><i class="ti-fullscreen"></i></span></a>
+                    </div>
+                </div>
+                <div class="dropdown  nav-item main-header-message header-contact">
+                    <a class="new nav-link" href="#"><i class="ti-email"></i><span class=" pulse-danger"></span></a>
+                    <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
+                        <div class="main-dropdown-header d-sm-none">
+                            <a class="main-header-arrow" href=""><i class="icon ion-md-arrow-back"></i></a>
+                        </div>
+                        <div class="menu-header-content text-left d-flex">
+                            <div class="">
+                                <h6 class="menu-header-title text-white mb-0">5 new Messages</h6>
+                            </div>
+                            <div class="my-auto ml-auto">
+                                <span class="badge badge-pill badge-warning float-right">Mark All Read</span>
+                            </div>
+                        </div>
+                        <div class="main-message-list text-scroll">
+                            <a href="#" class="p-3 d-flex border-bottom">
+                                <div class="  drop-img  cover-image  " data-image-src="../../assets/img/faces/3.jpg">
+                                    <span class="avatar-status bg-teal"></span>
+                                </div>
+
+                                <div class="wd-90p">
+                                    <div class="d-flex">
+                                        <h5 class="mb-1 name">Paul Molive</h5>
+                                        <p class="time mb-0 text-right ml-auto float-right">10 min ago</p>
+                                    </div>
+                                    <p class="mb-0 desc">I'm sorry but i'm not sure how...</p>
+                                </div>
+                            </a>
+                            <a href="#" class="p-3 d-flex border-bottom">
+                                <div class="drop-img cover-image" data-image-src="../../assets/img/faces/2.jpg">
+                                    <span class="avatar-status bg-teal"></span>
+                                </div>
+                                <div class="wd-90p">
+                                    <div class="d-flex">
+                                        <h5 class="mb-1 name">Sahar Dary</h5>
+                                        <p class="time mb-0 text-right ml-auto float-right">13 min ago</p>
+                                    </div>
+                                    <p class="mb-0 desc">All set ! Now, time to get to you now......</p>
+                                </div>
+                            </a>
+                            <a href="#" class="p-3 d-flex border-bottom">
+                                <div class="drop-img cover-image" data-image-src="../../assets/img/faces/9.jpg">
+                                    <span class="avatar-status bg-teal"></span>
+                                </div>
+                                <div class="wd-90p">
+                                    <div class="d-flex">
+                                        <h5 class="mb-1 name">Khadija Mehr</h5>
+                                        <p class="time mb-0 text-right ml-auto float-right">20 min ago</p>
+                                    </div>
+                                    <p class="mb-0 desc">Are you ready to pickup your Delivery...</p>
+                                </div>
+                            </a>
+                            <a href="#" class="p-3 d-flex border-bottom">
+                                <div class="drop-img cover-image" data-image-src="../../assets/img/faces/12.jpg">
+                                    <span class="avatar-status bg-danger"></span>
+                                </div>
+                                <div class="wd-90p">
+                                    <div class="d-flex">
+                                        <h5 class="mb-1 name">Barney Cull</h5>
+                                        <p class="time mb-0 text-right ml-auto float-right">30 min ago</p>
+                                    </div>
+                                    <p class="mb-0 desc">Here are some products ...</p>
+                                </div>
+                            </a>
+                            <a href="#" class="p-3 d-flex border-bottom">
+                                <div class="drop-img cover-image" data-image-src="../../assets/img/faces/5.jpg">
+                                    <span class="avatar-status bg-teal"></span>
+                                </div>
+                                <div class="wd-90p">
+                                    <div class="d-flex">
+                                        <h5 class="mb-1 name">Petey Cruiser</h5>
+                                        <p class="time mb-0 text-right ml-auto float-right">35 min ago</p>
+                                    </div>
+                                    <p class="mb-0 desc">I'm sorry but i'm not sure how...</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="text-center dropdown-footer">
+                            <a href="text-center">VIEW ALL</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown nav-item main-header-notification">
+                    <a class="new nav-link" href="#"><i class="ti-bell "></i><span class=" pulse"></span></a>
+                    <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
+                        <div class="menu-header-content text-left d-flex">
+                            <div class="">
+                                <h6 class="menu-header-title text-white mb-0">7 new Notifications</h6>
+                            </div>
+                            <div class="my-auto ml-auto">
+                                <span class="badge badge-pill badge-warning float-right">Mark All Read</span>
+                            </div>
+                        </div>
+                        <div class="main-notification-list notify-scroll">
+                            <a href="#" class="d-flex  p-3 border-bottom ">
+                                <div class="notifyimg bg-success-transparent">
+                                    <i class="la la-shopping-basket text-success"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">New Order Received</h5>
+                                    <div class="notification-subtext">1 hour ago</div>
+                                </div>
+                                <div class="ml-auto">
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                            <a href="#" class="d-flex p-3 border-bottom">
+                                <div class="notifyimg bg-danger-transparent">
+                                    <i class="la la-user-check text-danger"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">22 verified registrations</h5>
+                                    <div class="notification-subtext">2 hour ago</div>
+                                </div>
+                                <div class="ml-auto">
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                            <a href="#" class="d-flex p-3 border-bottom">
+                                <div class="notifyimg bg-primary-transparent">
+                                    <i class="la la-check-circle text-primary"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">Project has been approved</h5>
+                                    <div class="notification-subtext">4 hour ago</div>
+                                </div>
+                                <div class="ml-auto">
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                            <a href="#" class="d-flex p-3 border-bottom">
+                                <div class="notifyimg bg-pink-transparent">
+                                    <i class="la la-file-alt text-pink"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">New files available</h5>
+                                    <div class="notification-subtext">10 hour ago</div>
+                                </div>
+                                <div class="ml-auto">
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                            <a href="#" class="d-flex p-3 border-bottom">
+                                <div class="notifyimg bg-warning-transparent">
+                                    <i class="la la-envelope-open text-warning"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">New review received</h5>
+                                    <div class="notification-subtext">1 day ago</div>
+                                </div>
+                                <div class="ml-auto">
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                            <a href="#" class="d-flex p-3">
+                                <div class="notifyimg bg-purple-transparent">
+                                    <i class="la la-gem text-purple"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="notification-label mb-1">Updates Available</h5>
+                                    <div class="notification-subtext">2 days ago</div>
+                                </div>
+                                <div class="ml-auto">
+                                    <i class="las la-angle-right text-right text-muted"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="dropdown-footer">
+                            <a href="">VIEW ALL</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown main-profile-menu nav nav-item nav-link">
+                    <a class="profile-user" href=""><img alt="" src="../../assets/img/faces/5.jpg"></a>
+                    <div class="dropdown-menu dropdown-menu-arrow animated fadeInUp">
+                        <div class="main-header-profile header-img">
+                            <div class="main-img-user"><img alt="" src="../../assets/img/faces/5.jpg"></div>
+                            <h6>Elizabeth Jane</h6><span>Premium Member</span>
+                        </div>
+                        <a class="dropdown-item" href=""><i class="far fa-user"></i> My Profile</a>
+                        <a class="dropdown-item" href=""><i class="far fa-edit"></i> Edit Profile</a>
+                        <a class="dropdown-item" href=""><i class="far fa-clock"></i> Activity Logs</a>
+                        <a class="dropdown-item" href=""><i class="fas fa-sliders-h"></i> Account Settings</a>
+                        <a class="dropdown-item" href="page-signin.html"><i class="fas fa-sign-out-alt"></i> Sign
+                            Out</a>
+                    </div>
+                </div>
+                <div class="dropdown main-header-message right-toggle">
+                    <a class="nav-link " data-toggle="sidebar-right" data-target=".sidebar-right">
+                        <i class="ti-menu tx-20 bg-transparent"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- mobile-header -->
+
+<div class="container-fluid">
+
+
+
+    <!-- row  -->
+    <div class="row">
+        <div class="col-xl-12 col-md-12 col-lg-12">
+            <div class=" overflow-hidden bg-transparent card-crypto-scroll shadow-none">
+                <div class="js-conveyor-example">
+                    <ul class="news-crypto">
+                        <li>
+                            <div class="crypto-card">
                                 <div class="row">
-
-                                    <div class="col-lg-8 mx-auto text-center">
-                                        <div class="site_audit_data_wrp">
-                                            <div class="site_audit_title">
-                                                <h1>Site Audit</h1>
-                                            </div>
-                                            <div class="site_audit_input_search">
-                                                <form method="post" action="" onsubmit="audit_loader()">
-                                                    {% csrf_token %}
-                                                    <div class="input-group mb-3"> <input type="text"
-                                                            name="search_audit" class="form-control input-text"
-                                                            placeholder="Search products...."
-                                                            aria-label="Recipient's username"
-                                                            aria-describedby="basic-addon2">
-                                                        <div class="input-group-append"> <button
-                                                                class="btn btn-outline-warning btn-lg" type="submit"
-                                                                name="btn_audit"><i
-                                                                    class="fa fa-search"></i>Search</button> </div>
-                                                    </div>
-                                                </form>
-                                            </div>
+                                    <div class="d-flex">
+                                        <div class="my-auto">
+                                            <img src="{% static 'assets/img/crypto-currencies/round-outline/Augur.svg' %}"
+                                                class="w-6 h-6 mt-0" alt="">
                                         </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="seo_tool_loder_wrp">
-                                            <div class="seo_tool_web_loader">
-                                                <div class="loader" id="audit_loader" style="display: none;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                   {% if data1 %}
-                                   <div class="dashboard_search">
-                                    <div class="container justify-content-center">
-                                        <div class="row">
-
-                                            <div class="site_audit_wrp">
-                                                <div class="row">
-                                                    <div class="col-lg-4">
-                                                        <div class="site_audit_das">
-                                                            <h5>Redirects</h5>
-                                                            <div class="prgress-section">
-                                                                <div class="prgress-box">
-                                                                    <div class="prgress-box-wrap">
-                                                                        <span class="label {% if redirects.redirects_http_score > 0 and redirects.redirects_http_score <= 40 %} progress-red {% elif redirects.redirects_http_score > 40 and redirects.redirects_http_score <= 70 %} progress-medium  {% elif redirects.redirects_http_score > 70 and redirects.redirects_http_score <= 100 %} progress-full {% endif %}" style="width: {{redirects.redirects_http_score}}%;"></span>
-                                                                    </div>
-                                                                    <span>{{redirects.redirects_http_score}}%</span>
-                                                                </div>
-                                                            </div>
-                                                            <h6>{{redirects.redirects_http_title}}</h6>
-                                                            <p>{{redirects.redirects_http_desc}}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="site_audit_das">
-                                                            <h5>Service</h5>
-                                                            <div class="prgress-section">
-                                                                <div class="prgress-box">
-                                                                    <div class="prgress-box-wrap">
-                                                                        <span class="label {% if service.service_worker_score > 0 and service.service_worker_score <= 40 %} progress-red {% elif service.service_worker_score > 40 and service.service_worker_score <= 70 %} progress-medium  {% elif service.service_worker_score > 70 and service.service_worker_score <= 100 %} progress-full {% endif %}" style="width: {{service.service_worker_score}}%;"></span>
-                                                                    </div>
-                                                                    <span>{{service.service_worker_score}}%</span>
-                                                                </div>
-                                                            </div>
-                                                            <h6>{{service.service_worker_title}}</h6>
-                                                            <p>{{service.service_worker_desc}}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="site_audit_das">
-                                                            <h5>View Port</h5>
-                                                            <div class="prgress-section">
-                                                                <div class="prgress-box">
-                                                                    <div class="prgress-box-wrap">
-                                                                        <span class="label {% if viewport.viewport_score > 0 and viewport.viewport_score <= 40 %} progress-red {% elif viewport.viewport_score > 40 and viewport.viewport_score <= 70 %} progress-medium  {% elif viewport.viewport_score > 70 and viewport.viewport_score <= 100 %} progress-full {% endif %}" style="width: {{viewport.viewport_score}}%;"></span>
-                                                                    </div>
-                                                                    <span>{{viewport.viewport_score}}%</span>
-                                                                </div>
-                                                            </div>
-                                                            <h6>{{viewport.viewport_title}}</h6>
-                                                            <p>{{viewport.viewport_desc}}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="site_audit_das">
-                                                            <h5>First Contentful Paint</h5>
-                                                            <div class="prgress-section">
-                                                                <div class="prgress-box">
-                                                                    <div class="prgress-box-wrap">
-                                                                        <span class="label {% if first_contentful_paint.first_contentful_paint_score > 0 and first_contentful_paint.first_contentful_paint_score <= 40 %} progress-red {% elif first_contentful_paint.first_contentful_paint_score > 40 and first_contentful_paint.first_contentful_paint_score <= 70 %} progress-medium  {% elif first_contentful_paint.first_contentful_paint_score > 70 and first_contentful_paint.first_contentful_paint_score <= 100 %} progress-full {% endif %}" style="width: {{first_contentful_paint.first_contentful_paint_score}}%;"></span>
-                                                                    </div>
-                                                                    <span>{{first_contentful_paint.first_contentful_paint_score}}%</span>
-                                                                </div>
-                                                            </div>
-                                                            <h6>{{first_contentful_paint.first_contentful_paint_title}}
-                                                            </h6>
-                                                            <p>{{first_contentful_paint.first_contentful_paint_desc}}
-                                                            </p>
-                                                            <span class="time-box"> <i class="fal fa-clock"></i>
-                                                                {{first_contentful_paint.first_contentful_paint_display_time}}
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="site_audit_das">
-                                                            <h5>Largest Contentful Paint</h5>
-                                                            <div class="prgress-section">
-                                                                <div class="prgress-box">
-                                                                    <div class="prgress-box-wrap">
-                                                                        <span class="label {% if largest_contentful_paint.largest_contentful_paint_score > 0 and largest_contentful_paint.largest_contentful_paint_score <= 40 %} progress-red {% elif largest_contentful_paint.largest_contentful_paint_score > 40 and largest_contentful_paint.largest_contentful_paint_score <= 70 %} progress-medium  {% elif largest_contentful_paint.largest_contentful_paint_score > 70 and largest_contentful_paint.largest_contentful_paint_score <= 100 %} progress-full {% endif %}" style="width: {{largest_contentful_paint.largest_contentful_paint_score}}%;"></span>
-                                                                    </div>
-                                                                    <span>{{largest_contentful_paint.largest_contentful_paint_score}}%</span>
-                                                                </div>
-                                                            </div>
-                                                            <h6>{{largest_contentful_paint.largest_contentful_paint_title}}
-                                                            </h6>
-                                                            <p>{{largest_contentful_paint.largest_contentful_paint_desc}}
-                                                            </p>
-                                                            <span class="time-box"> <i class="fal fa-clock"></i>
-                                                                {{largest_contentful_paint.largest_contentful_paint_display_time}}
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="site_audit_das">
-                                                            <h5>Speed Index</h5>
-                                                            <div class="prgress-section">
-                                                                <div class="prgress-box">
-                                                                    <div class="prgress-box-wrap">
-                                                                        <span class="label {% if speed_index.speed_index_score > 0 and speed_index.speed_index_score <= 40 %} progress-red {% elif speed_index.speed_index_score > 40 and speed_index.speed_index_score <= 70 %} progress-medium  {% elif speed_index.speed_index_score > 70 and speed_index.speed_index_score <= 100 %} progress-full {% endif %}" style="width: {{speed_index.speed_index_score}}%;"></span>
-                                                                    </div>
-                                                                    <span>{{speed_index.speed_index_score}}%</span>
-                                                                </div>
-                                                            </div>
-                                                            <h6>{{speed_index.speed_index_title}}</h6>
-                                                            <p>{{speed_index.speed_index_desc}}</p>
-                                                            <span class="time-box"> <i class="fal fa-clock"></i>
-                                                                {{speed_index.speed_index_display_time}}</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="site_audit_das">
-                                                            <h5>Total Blocking Time</h5>
-                                                            <div class="prgress-section">
-                                                                <div class="prgress-box">
-                                                                    <div class="prgress-box-wrap">
-                                                                        <span class="label {% if total_blocking_time.total_blocking_time_score > 0 and total_blocking_time.total_blocking_time_score <= 40 %} progress-red {% elif total_blocking_time.total_blocking_time_score > 40 and total_blocking_time.total_blocking_time_score <= 70 %} progress-medium  {% elif total_blocking_time.total_blocking_time_score > 70 and total_blocking_time.total_blocking_time_score <= 100 %} progress-full {% endif %}" style="width: {{total_blocking_time.total_blocking_time_score}}%;"></span>
-                                                                    </div>
-                                                                    <span>{{total_blocking_time.total_blocking_time_score}}%</span>
-                                                                </div>
-                                                            </div>
-                                                            <h6>{{total_blocking_time.total_blocking_time_title}}</h6>
-                                                            <p>{{total_blocking_time.total_blocking_time_desc}}</p>
-                                                            <span class="time-box"> <i class="fal fa-clock"></i>
-                                                                {{total_blocking_time.total_blocking_time_time}}</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="site_audit_das">
-                                                            <h5>Error in console</h5>
-                                                            <div class="prgress-section">
-                                                                <div class="prgress-box">
-                                                                    <div class="prgress-box-wrap">
-                                                                        <span class="label {% if errors_in_console.errors_in_console_score > 0 and errors_in_console.errors_in_console_score <= 40 %} progress-red {% elif errors_in_console.errors_in_console_score > 40 and errors_in_console.errors_in_console_score <= 70 %} progress-medium  {% elif errors_in_console.errors_in_console_score > 70 and errors_in_console.errors_in_console_score <= 100 %} progress-full {% endif %}" style="width: {{errors_in_console.errors_in_console_score}}%;"></span>
-                                                                    </div>
-                                                                    <span>{{errors_in_console.errors_in_console_score}}%</span>
-                                                                </div>
-                                                            </div>
-                                                            <h6>{{errors_in_console.errors_in_console_title}}</h6>
-                                                            <p>{{errors_in_console.errors_in_console_desc}}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="site_audit_das">
-                                                            <h5>Server Response Time</h5>
-                                                            <div class="prgress-section">
-                                                                <div class="prgress-box">
-                                                                    <div class="prgress-box-wrap">
-                                                                        <span class="label {% if server_response_time.server_response_time_score > 0 and server_response_time.server_response_time_score <= 40 %} progress-red {% elif server_response_time.server_response_time_score > 40 and server_response_time.server_response_time_score <= 70 %} progress-medium  {% elif server_response_time.server_response_time_score > 70 and server_response_time.server_response_time_score <= 100 %} progress-full {% endif %}" style="width: {{server_response_time.server_response_time_score}}%;"></span>
-                                                                    </div>
-                                                                    <span>{{server_response_time.server_response_time_score}}%</span>
-                                                                </div>
-                                                            </div>
-                                                            <h6>{{server_response_time.server_response_time_title}}
-                                                            </h6>
-                                                            <p>{{server_response_time.server_response_time_desc}}
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="site_audit_das">
-                                                            <h5>Redirects</h5>
-                                                            <div class="prgress-section">
-                                                                <div class="prgress-box">
-                                                                    <div class="prgress-box-wrap">
-                                                                        <span class="label {% if redirects_overall.redirects_score > 0 and redirects_overall.redirects_score <= 40 %} progress-red {% elif redirects_overall.redirects_score > 40 and redirects_overall.redirects_score <= 70 %} progress-medium  {% elif redirects_overall.redirects_score > 70 and redirects_overall.redirects_score <= 100 %} progress-full {% endif %}" style="width: {{redirects_overall.redirects_score}}%;"></span>
-                                                                    </div>
-                                                                    <span>{{redirects_overall.redirects_score}}%</span>
-                                                                </div>
-                                                            </div>
-                                                            <h6>{{redirects_overall.redirects_title}}</h6>
-                                                            <p>{{redirects_overall.redirects_desc}}</p>
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
+                                        <div class="ml-3">
+                                            <p class="mb-1 tx-13">REP / USDT</p>
+                                            <div class="m-0 tx-13 text-warning">$<span class="rep_data"></span><span
+                                                    class="text-danger ml-2"><i
+                                                        class="ion-arrow-down-c mr-1"></i>-0.78%</span></div>
                                         </div>
                                     </div>
                                 </div>
-                                {% endif %}
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="crypto-card">
+                                <div class="row">
+                                    <div class="d-flex">
+                                        <div class="">
+                                            <img src="{% static 'assets/img/crypto-currencies/round-outline/BitShares.svg' %}"
+                                                class="w-6 h-6 mt-0" alt="">
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="mb-1 tx-13">BTS / USDT</p>
+                                            <div class="m-0 tx-13 text-warning">$<span class="bts_data"></span><span
+                                                    class="text-success ml-2"><i
+                                                        class="ion-arrow-up-c mr-1"></i>-02.25%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="crypto-card">
+                                <div class="row">
+                                    <div class=" d-flex">
+                                        <div class="my-auto">
+                                            <img src="{% static 'assets/img/crypto-currencies/round-outline/Dash.svg' %}"
+                                                class="w-6 h-6 mt-0" alt="">
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="mb-1 tx-13">Dash / USDT</p>
+                                            <div class="m-0 tx-13 text-warning">$<span class="dash_data"></span><span
+                                                    class="text-success ml-2"><i
+                                                        class="ion-arrow-up-c mr-1"></i>-11.85%%</span></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="crypto-card">
+                                <div class="row">
+                                    <div class=" d-flex">
+                                        <div class="">
+                                            <img src="{% static 'assets/img/crypto-currencies/round-outline/EOS.svg' %}"
+                                                class="w-6 h-6 mt-0" alt="">
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="mb-1 tx-13">EUR / USDT</p>
+                                            <div class="m-0 tx-13 text-warning">$<span class="eur_data"></span><span
+                                                    class="text-danger ml-2"><i
+                                                        class="ion-arrow-down-c mr-1"></i>-0.78%</span></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="crypto-card">
+                                <div class="row">
+                                    <div class=" d-flex">
+                                        <div class="">
+                                            <img src="{% static 'assets/img/crypto-currencies/round-outline/Decred.svg' %}"
+                                                class="w-6 h-6 mt-0" alt="">
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="mb-1 tx-13">ETH / USDT</p>
+                                            <div class="m-0 tx-13 text-warning ">$<span class="eth_data"></span><span
+                                                    class="text-success ml-2"><i
+                                                        class="ion-arrow-up-c mr-1"></i>-0.32%</span></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="crypto-card">
+                                <div class="row">
+                                    <div class=" d-flex">
+                                        <div class="">
+                                            <img src="{% static 'assets/img/crypto-currencies/round-outline/IOTA.svg' %}"
+                                                class="w-6 h-6 mt-0" alt="">
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="mb-1 tx-13">IOTA / USD</p>
+                                            <div class="m-0 tx-13 text-warning">$<span class="iot_data"> ..</span><span
+                                                    class="text-danger ml-2"><i
+                                                        class="ion-arrow-down-c mr-1"></i>-0.78%</span></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="crypto-card">
+                                <div class="row">
+                                    <div class=" d-flex">
+                                        <div class="">
+                                            <img src="{% static 'assets/img/crypto-currencies/round-outline/Litecoin.svg' %}"
+                                                class="w-6 h-6 mt-0" alt="">
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="mb-1 tx-13">LTC / USD</p>
+                                            <div class="m-0 tx-13 text-warning">$<span class="ltc_data"></span><span
+                                                    class="text-success ml-2"><i
+                                                        class="ion-arrow-up-c mr-1"></i>-1.42%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="crypto-card">
+                                <div class="row">
+                                    <div class=" d-flex">
+                                        <div class="">
+                                            <img src="{% static 'assets/img/crypto-currencies/round-outline/Monero.svg' %}"
+                                                class="w-6 h-6 mt-0" alt="">
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="mb-1 tx-13">XMR / EUR</p>
+                                            <div class="m-0 tx-13 text-warning">$<span class="xmr_data"></span><span
+                                                    class="text-danger ml-2"><i
+                                                        class="ion-arrow-down-c mr-1"></i>-0.78%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="crypto-card">
+                                <div class="row">
+                                    <div class=" d-flex">
+                                        <div class="">
+                                            <img src="{% static 'assets/img/crypto-currencies/round-outline/Netko-coin.svg' %}"
+                                                class="w-6 h-6 mt-0" alt="">
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="mb-1 tx-13">NEO / USD</p>
+                                            <div class="m-0 tx-13 text-warning">$<span class="neo_data"></span><span
+                                                    class="text-danger ml-2"><i
+                                                        class="ion-arrow-down-c mr-1"></i>-0.78%</span></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /row -->
+
+    <!-- row -->
+    <div class="row row-sm">
+        <div class="col-xl-4 col-lg-6 col-md-12">
+            <div class="card crypto crypt-primary overflow-hidden">
+                <div class="card-body iconfont text-left">
+                    <div class="media">
+                        <div class="coin-logo bg-primary-transparent">
+                            <i class="cf cf-eth text-primary"></i>
+                        </div>
+                        <div class="media-body">
+                            <h6>Ethereum</h6>
+                            <p>ETH (USD) = $148.46 (<span class="text-danger">-12.24%</span>)</p>
+                        </div>
+                        <div class="card-body-top mb-3">
+                            <div>
+                                <a href="">14</a> USD Markets
+                            </div>
+                            <div>
+                                <a href="">82</a> LTC Markets
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flot-wrapper">
+                        <div class="flot-chart ht-150 mt-4" id="flotChart3"></div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <nav class="nav">
+                        <a class="nav-link active" href=""><span>1D</span><span>-12.24%</span></a> <a class="nav-link"
+                            href=""><span>1W</span><span>-16.48%</span></a> <a class="nav-link"
+                            href=""><span>1M</span><span>-15.21%</span></a> <a class="nav-link"
+                            href=""><span>1Y</span><span>-40.17%</span></a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-12">
+            <div class="card crypto crypt-danger overflow-hidden">
+                <div class="card-body iconfont text-left">
+                    <div class="media">
+                        <div class="coin-logo bg-danger-transparent">
+                            <i class="cf cf-ltc tx-18 text-danger"></i>
+                        </div>
+                        <div class="media-body">
+                            <h6>Litecoin</h6>
+                            <p>LTC (USD) = $45.81 (<span class="text-danger">-12.24%</span>)</p>
+                        </div>
+                        <div class="card-body-top">
+                            <div>
+                                <a href="">21</a> USD Markets
+                            </div>
+                            <div>
+                                <a href="">56</a> LTC Markets
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flot-wrapper">
+                        <div class="flot-chart ht-150  mt-4" id="flotChart5"></div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <nav class="nav">
+                        <a class="nav-link active" href=""><span>1D</span><span>-15.24%</span></a> <a class="nav-link"
+                            href=""><span>1W</span><span>-24.68%</span></a> <a class="nav-link"
+                            href=""><span>1M</span><span>-17.15%</span></a> <a class="nav-link"
+                            href=""><span>1Y</span><span>-30.23%</span></a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-12 col-md-12">
+            <div class="card crypto  crypt-success overflow-hidden">
+                <div class="card-body iconfont text-left">
+                    <div class="media">
+                        <div class="coin-logo bg-success-transparent">
+                            <i class="cf cf-xrp text-success"></i>
+                        </div>
+                        <div class="media-body">
+                            <h6>Ripple</h6>
+                            <p>XRP (USD) = $0.2195(<span class="text-danger">-2.97%</span>)</p>
+                        </div>
+                        <div class="card-body-top">
+                            <div>
+                                <a href="">4</a> USD Markets
+                            </div>
+                            <div>
+                                <a href="">45</a> LTC Markets
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flot-wrapper">
+                        <div class="flot-chart ht-150 mt-4" id="flotChart1"></div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <nav class="nav">
+                        <a class="nav-link active" href=""><span>1D</span><span>-14.32%</span></a> <a class="nav-link"
+                            href=""><span>1W</span><span>-24.39%</span></a> <a class="nav-link"
+                            href=""><span>1M</span><span>-42.12%</span></a> <a class="nav-link"
+                            href=""><span>1Y</span><span>-50.34%</span></a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /row -->
+
+    <!-- row -->
+    <div class="row row-sm row-deck">
+        <div class="col-xl-4 col-lg-12">
+            <div class="card overflow-hidden ">
+                <div class="card-header pb-0">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="card-title mg-b-10">Market Info</h4>
+                        <i class="mdi mdi-dots-horizontal text-gray"></i>
+                    </div>
+                    <p class="tx-12 tx-gray-500 mb-2">An activity is a scheduled phase in a project plan with a distinct
+                        beginning and end. <a href="">Learn more</a></p>
+                </div>
+                <div class="card-body p-0">
+                    <div class="">
+                        <div class="list d-flex align-items-center border-bottom p-2 pl-3 pr-3 mt-0">
+                            <img class="w-6 h-6" src="{% static 'assets/img/crypto-currencies/round-outline/Bitcoin.svg' %}"
+                                alt="image">
+                            <div class="w-100 ml-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="mt-1 mb-0 font-weight-semibold">BTC/USD</p>
+                                    <span class="ml-auto fs-15 mb-0 font-weight-semibold">$<span class="etc_data"></span></span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-success tx-13"><i class="fa fa-caret-up mr-1"></i>2.04%</span>
+                                    <small class="text-muted ml-auto">340.5 USD</small>
                                 </div>
                             </div>
                         </div>
+                        <!-- <div class="list d-flex align-items-center border-bottom p-2 pl-3 pr-3">
+                            <img class="w-6 h-6" src="../../assets/img/crypto-currencies/round-outline/Ethereum.svg"
+                                alt="image">
+                            <div class="w-100 ml-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="mt-1 mb-0 font-weight-semibold">ETH/USD</p>
+                                    <span class="ml-auto fs-15 mb-0 font-weight-semibold">$15,183.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-danger tx-13"><i class="fa fa-caret-down mr-1"></i>1.25%</span>
+                                    <small class="text-muted ml-auto">283.5 USD</small>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="list d-flex align-items-center border-bottom p-2 pl-3 pr-3">
+                            <img class="w-6 h-6" src="../../assets/img/crypto-currencies/round-outline/Litecoin.svg"
+                                alt="image">
+                            <div class="w-100 ml-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="mt-1 mb-0 font-weight-semibold">LTC/USD</p>
+                                    <span class="ml-auto fs-15 mb-0 font-weight-semibold">$14,348.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-danger tx-13"><i class="fa fa-caret-down mr-1"></i>1.04%</span>
+                                    <small class="text-muted ml-auto">368.2 USD</small>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="list d-flex align-items-center border-bottom p-2 pl-3 pr-3">
+                            <img class="w-6 h-6" src="../../assets/img/crypto-currencies/round-outline/Dash.svg"
+                                alt="image">
+                            <div class="w-100 ml-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="mt-1 mb-0 font-weight-semibold">Dash/USD</p>
+                                    <span class="ml-auto fs-15 mb-0 font-weight-semibold">$12,157.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-success tx-13"><i class="fa fa-caret-up mr-1"></i>2.04%</span>
+                                    <small class="text-muted ml-auto">127.3 USD</small>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="list d-flex align-items-center p-2 pl-3 pr-3 mb-0">
+                            <img class="w-6 h-6" src="../../assets/img/crypto-currencies/round-outline/NEM.svg"
+                                alt="image">
+                            <div class=" w-100 ml-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="mt-1 mb-0 font-weight-semibold">BTC/USD</p>
+                                    <span class="ml-auto fs-15 mb-0 font-weight-semibold">$11,183.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-success tx-13"><i class="fa fa-caret-up mr-1"></i>1.04%</span>
+                                    <small class="text-muted ml-auto ">165.8 USD</small>
+                                </div>
+                            </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
-</main>
+        <div class="col-xl-8 col-lg-12">
+            <div class="card card-bitcoin">
+                <div class=" card-minimal-two">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Bitcoin / USD Rate</h4>
+                        <div class="">
+                            <nav class="nav nav-pills">
+                                <a class="nav-link active" data-toggle="tab" href="#">BTH</a> <a class="nav-link"
+                                    data-toggle="tab" href="#">ETH</a> <a class="nav-link" data-toggle="tab"
+                                    href="#">LTC</a> <a class="nav-link" data-toggle="tab" href="#">BTG</a>
+                            </nav>
+                        </div><!-- card-header-right -->
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-icon"><i class="fab fa-bitcoin"></i></div>
+                        <div class="media-body">
+                            <div class="row row-sm">
+                                <div class="col">
+                                    <label>Symbol</label>
+                                    <p>BTC</p>
+                                </div>
+                                <div class="col-3">
+                                    <label>Price Benchmark</label>
+                                    <p>128.00%</p>
+                                </div>
+                                <div class="col">
+                                    <label>Price (USD)</label>
+                                    <p>$4,253.49</p>
+                                </div>
+                                <div class="col">
+                                    <label>Change (24H)</label>
+                                    <p>-0.24%</p>
+                                </div>
+                                <div class="col">
+                                    <label>Market Cap</label>
+                                    <p>$179.12B</p>
+                                </div>
+                            </div><!-- row -->
+                        </div>
+                    </div><!-- media-body -->
+                    <div class="flot-wrapper">
+                        <div class="flot-chart ht-226 wd-100p" id="flotChart12"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /row  -->
 
+</div>
 {% endblock %}
 
 {% block script %}
 <script>
-    function loader() {
 
-        document.getElementById("seo_loader").style.display = "block";
-        return true
-    }
-    function audit_loader() {
 
-        document.getElementById("audit_loader").style.display = "block";
-        return true
-    }
+    btc_value = 0
+    var interval = 1000;
+    var ajax_btc = function () {
+        $.ajax({
+            type: 'GET',
+            url: "/user/btc_data/",
+            success: function (data) {
+                btc_value = data.price
+                $('.etc_data').html(parseFloat(data.price).toFixed(4));
+            },
+            timeout: 1000
+        });
+
+    };
+
+    setInterval(ajax_btc, interval);
+
+    var ajax_eth = function () {
+        $.ajax({
+            type: 'GET',
+            url: "/user/eth_data/",
+            success: function (data) {
+                $('.eth_data').html(parseFloat(data.price).toFixed(4));
+            },
+            timeout: 1000
+        });
+
+    };
+    setInterval(ajax_eth, interval);
+
+    var ajax_iot = function () {
+        $.ajax({
+            type: 'GET',
+            url: "/user/iot_data/",
+            success: function (data) {
+                if (data != false && btc_value != 0) {
+                    $('.iot_data').html(parseFloat(data.price * btc_value).toFixed(4));
+                }
+            },
+            timeout: 1000
+        });
+
+    };
+    setInterval(ajax_iot, interval);
+
+    var ajax_rep = function () {
+        $.ajax({
+            type: 'GET',
+            url: "/user/rep_data/",
+            success: function (data) {
+                if (data != false) {
+                    $('.rep_data').html(parseFloat(data.price).toFixed(4));
+                }
+            },
+            timeout: 1000
+        });
+
+    };
+    setInterval(ajax_rep, interval);
+
+    var ajax_bts = function () {
+        $.ajax({
+            type: 'GET',
+            url: "/user/bts_data/",
+            success: function (data) {
+                if (data != false) {
+                    $('.bts_data').html(parseFloat(data.price).toFixed(4));
+                }
+            },
+            timeout: 1000
+        });
+
+    };
+    setInterval(ajax_bts, interval);
+
+    var ajax_dash = function () {
+        $.ajax({
+            type: 'GET',
+            url: "/user/dash_data/",
+            success: function (data) {
+                if (data != false) {
+                    $('.dash_data').html(parseFloat(data.price).toFixed(4));
+                }
+            },
+            timeout: 1000
+        });
+
+    };
+    setInterval(ajax_dash, interval);
+
+    var ajax_eur = function () {
+        $.ajax({
+            type: 'GET',
+            url: "/user/eur_data/",
+            success: function (data) {
+                if (data != false) {
+                    $('.eur_data').html(parseFloat(data.price).toFixed(4));
+                }
+            },
+            timeout: 1000
+        });
+
+    };
+    setInterval(ajax_eur, interval);
+
+    var ajax_ltc = function () {
+        $.ajax({
+            type: 'GET',
+            url: "/user/ltc_data/",
+            success: function (data) {
+                if (data != false) {
+                    $('.ltc_data').html(parseFloat(data.price).toFixed(4));
+                }
+            },
+            timeout: 1000
+        });
+
+    };
+    setInterval(ajax_ltc, interval);
+
+    var ajax_xmr = function () {
+        $.ajax({
+            type: 'GET',
+            url: "/user/xmr_data/",
+            success: function (data) {
+                console.log(data)
+                if (data != false) {
+                    $('.xmr_data').html(parseFloat(data.price).toFixed(4));
+                }
+            },
+            timeout: 1000
+        });
+
+    };
+    setInterval(ajax_xmr, interval);
+
+    var ajax_neo = function () {
+        $.ajax({
+            type: 'GET',
+            url: "/user/neo_data/",
+            success: function (data) {
+                console.log(data)
+                if (data != false) {
+                    $('.neo_data').html(parseFloat(data.price).toFixed(4));
+                }
+            },
+            timeout: 1000
+        });
+
+    };
+    setInterval(ajax_neo, interval);
+
+
+
+
+
+
+
 
 </script>
 

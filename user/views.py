@@ -92,14 +92,7 @@ def btc_trade_history(msg):
         btc_price['error'] = True
 
 def dashboard(request):
-    if request.user.is_authenticated:
-        bsm = ThreadedWebsocketManager()
-        bsm.start()
-        bsm.start_symbol_ticker_socket(callback=btc_trade_history, symbol='BTCUSDT')
-        bsm.stop()
-        # Refer https://algotrading101.com/learn/binance-python-api-guide/ for binance live data
-        # Refer https://marketstack.com/documentation for Stocks live streaming
-
+    return render(request, 'dashboard.html')
 
 ubwa = BinanceWebSocketApiManager(exchange="binance.com")
 ubwa.create_stream(['trade'], ['btcusdt'], output="UnicornFy")
@@ -123,6 +116,97 @@ def get_latest_eth(request):
     print(oldest_data_from_stream)
     return JsonResponse(oldest_data_from_stream,safe=False)
 
+iotausd = BinanceWebSocketApiManager(exchange="binance.com")
+iotausd.create_stream(['trade'], ['iotabtc'], output="UnicornFy")
+
+def get_latest_iot(request):
+    # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
+    oldest_data_from_stream = iotausd.pop_stream_data_from_stream_buffer()
+    import time
+    print(oldest_data_from_stream)
+    return JsonResponse(oldest_data_from_stream,safe=False)
+
+repusd = BinanceWebSocketApiManager(exchange="binance.com")
+repusd.create_stream(['trade'], ['repusdt'], output="UnicornFy")
+
+def get_latest_rep(request):
+    # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
+    oldest_data_from_stream = repusd.pop_stream_data_from_stream_buffer()
+    import time
+    print(oldest_data_from_stream)
+    return JsonResponse(oldest_data_from_stream,safe=False)
+
+btsusd = BinanceWebSocketApiManager(exchange="binance.com")
+btsusd.create_stream(['trade'], ['btsusdt'], output="UnicornFy")
+
+def get_latest_bts(request):
+    # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
+    oldest_data_from_stream = btsusd.pop_stream_data_from_stream_buffer()
+    import time
+    print(oldest_data_from_stream)
+    return JsonResponse(oldest_data_from_stream,safe=False)
+
+dashusd = BinanceWebSocketApiManager(exchange="binance.com")
+dashusd.create_stream(['trade'], ['dashusdt'], output="UnicornFy")
+
+def get_latest_dash(request):
+    # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
+    dash_data = dashusd.pop_stream_data_from_stream_buffer()
+    import time
+    print(dash_data)
+    return JsonResponse(dash_data,safe=False)
+
+eurusd = BinanceWebSocketApiManager(exchange="binance.com")
+eurusd.create_stream(['trade'], ['eurusdt'], output="UnicornFy")
+
+def get_latest_eur(request):
+    # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
+    eur_data = eurusd.pop_stream_data_from_stream_buffer()
+    import time
+    print(eur_data)
+    return JsonResponse(eur_data,safe=False)
+
+ltcusd = BinanceWebSocketApiManager(exchange="binance.com")
+ltcusd.create_stream(['trade'], ['ltcusdt'], output="UnicornFy")
+
+def get_latest_ltc(request):
+    # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
+    ltc_data = ltcusd.pop_stream_data_from_stream_buffer()
+    import time
+    print(ltc_data)
+    return JsonResponse(ltc_data,safe=False)
+
+xmrusd = BinanceWebSocketApiManager(exchange="binance.com")
+xmrusd.create_stream(['trade'], ['xmrusdt'], output="UnicornFy")
+
+def get_latest_xmr(request):
+    # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
+    xmr_data = xmrusd.pop_stream_data_from_stream_buffer()
+    import time
+    print(xmr_data)
+    return JsonResponse(xmr_data,safe=False)
+
+neousd = BinanceWebSocketApiManager(exchange="binance.com")
+neousd.create_stream(['trade'], ['neousdt'], output="UnicornFy")
+
+def get_latest_neo(request):
+    # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
+    neo_data = neousd.pop_stream_data_from_stream_buffer()
+    import time
+    print(neo_data)
+    return JsonResponse(neo_data,safe=False)
+
+def crypto_history(request,crypto):
+    klines = client.get_historical_klines("ETHUSDT", Client.KLINE_INTERVAL_1MINUTE, "1 day ago UTC")
+    history_data = {}
+    for i in klines:
+        time = datetime.fromtimestamp(int(str(i[6])[:-2])).strftime("%m/%d/%Y, %H:%M:%S")
+        history_data[time] = i[4]
+    print(history_data)
+    return JsonResponse(history_data,safe=False)
+
+def demo(request):
+    return render(request, 'demo.html')
 
 
 def updatepassword(request):

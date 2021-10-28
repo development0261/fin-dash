@@ -1399,6 +1399,37 @@ transform: rotate(43.2deg);
     background-color: #ffffff;
 } */
 
+
+.user_name {
+    display: inline-block;
+}
+
+.user_name input,
+.password input {
+    margin-bottom: 15px;
+}
+
+.user_name label,
+.password label {
+    display: block;
+}
+
+.Login_btn a {
+    color: #000 !important; 
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.Login_btn a:hover{
+    color: #000;
+}
+
+.Login_btn img {
+    width: 20px;
+    margin-right: 10px;
+}
+
 .loader {
     border: 16px solid #f3f3f3;
     border-radius: 50%;

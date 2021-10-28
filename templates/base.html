@@ -5,6 +5,46 @@
 <head>
   <meta charset="UTF-8">
 
+
+  <!-- Icons css -->
+
+
+  <link href="{% static 'assets/css/icons.css' %}" rel="stylesheet">
+
+
+  <!-- Internal Chart-Morris css-->
+  <link href="{% static 'assets/plugins/morris.js/morris.css' %}" rel="stylesheet">
+
+  <!--  Left-Sidebar css -->
+  <link href="{%static 'assets/css/sidemenu-closed.css' %}" rel="stylesheet">
+
+  <!--  Right-sidemenu css -->
+  <link href="{% static 'assets/plugins/sidebar/sidebar.css' %}" rel="stylesheet">
+
+  <!-- Internal Nice-select css  -->
+  <link href="{% static 'assets/plugins/jquery-nice-select/css/nice-select.css' %}" rel="stylesheet"/>
+
+  <!-- Internal News-Ticker css-->
+  <link href="{% static 'assets/plugins/flag-icon-css/css/flag-icon.min.css' %}" rel="stylesheet">
+
+  <!-- Jquery-countdown css-->
+  <link href="{% static 'assets/plugins/jquery-countdown/countdown.css' %}" rel="stylesheet">
+
+  <!-- Internal News-Ticker css-->
+  <link href="{% static 'assets/plugins/newsticker/jquery.jConveyorTicker.css' %}" rel="stylesheet" />
+
+  <!-- style css-->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- skin css-->
+  <link href="{% static 'assets/css/skin-modes.css' %}" rel="stylesheet">
+
+  <!-- dark-theme css-->
+  <link href="{% static 'assets/css/style-dark.css' %}" rel="stylesheet">
+
+  <!--- Animations css-->
+  <link href="{% static 'assets/css/animate.css' %}" rel="stylesheet">
+
   <!-- Font -->
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -17,343 +57,113 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'default.css' %}" id="theme-color">
+    <link rel="stylesheet" href="{% static 'login.css' %}" id="theme-color">
   <title>SEO</title>
-  <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
+
   {% block style %}
 
   {% endblock %}
-  <link rel="stylesheet" href="/static/default.css" id="theme-color">
-  <link rel="stylesheet" href="/static/login.css" id="theme-color">
+
 </head>
 
+<body class="main-body app sidebar-mini dark-theme">
 
 <!--navigation-->
 <section class="smart-scroll">
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-md navbar-dark">
-            <a class="navbar-brand heading-black" href="index.html">
-                Fin-Dash
-            </a>
-            <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
-                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span data-feather="grid"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll d-flex flex-row align-items-center text-primary" href="{% url 'loginProcess' %}">
-                            <em data-feather="layout" width="18" height="18" class="mr-2"></em>
-                            Sign In / Register
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-md navbar-dark">
+      <a class="navbar-brand heading-black" href="index.html">
+        Fin-Dash
+      </a>
+      <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
+        data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span data-feather="grid"></span>
+      </button>
+     
+    </nav>
+  </div>
 </section>
 
 
-
-<div class="flex-container">
-  <div class="content-container">
-    <div class="form-container">
-      <form action="/action_page.php">
-        <h1>
-          Login
-        </h1>
-        <br>
-        <br>
-        <span class="subtitle">USERNAME:</span>
-        <br>
-        <input type="text" name="username" value="">
-        <br>
-        <span class="subtitle">PASSWORD:</span>
-        <br>
-        <input type="password" name="password" value="">
-        <br><br>
-        <input type="submit" value="SUBMIT" class="submit-btn">
-      </form>
-    </div>
-  </div>
-</div>
+{% block content %}
+{% endblock content %}
 
 
+<script src="{% static 'assets/plugins/jquery/jquery.min.js' %} "></script>
+
+		<!-- Datepicker js -->
+		<script src="{% static 'assets/plugins/jquery-ui/ui/widgets/datepicker.js' %}"></script>
+    <!-- Chart js  -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+		<!-- Bootstrap Bundle js -->
+		<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+		<!-- Ionicons js -->
+		<script src="{% static 'assets/plugins/ionicons/ionicons.js' %}"></script>
+
+		<!-- Moment js -->
+		<script src="{% static 'assets/plugins/moment/moment.js' %}"></script>
+
+		<!--Chart bundle min js -->
+		<script src="{% static 'assets/plugins/chart.js/Chart.bundle.min.js' %}"></script>
+		<script src="{% static 'assets/plugins/raphael/raphael.min.js' %}"></script>
+		<script src="{% static 'assets/plugins/peity/jquery.peity.min.js' %}"></script>
+
+		<!-- JQuery sparkline js -->
+		<script src="{% static 'assets/plugins/jquery-sparkline/jquery.sparkline.min.js' %}"></script>
+
+		<!-- Sampledata js -->
+		<script src="{% static 'assets/js/chart.flot.sampledata.js' %}"></script>
+
+		<!-- Perfect-scrollbar js -->
+		<script src="{% static 'assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+		<script src="{% static 'assets/plugins/perfect-scrollbar/p-scroll.js' %}"></script>
+
+		<!-- Internal  Flot js-->
+		<script src="{% static 'assets/plugins/jquery.flot/jquery.flot.js' %}"></script>
+		<script src="{% static 'assets/plugins/jquery.flot/jquery.flot.pie.js' %}"></script>
+		<script src="{% static 'assets/plugins/jquery.flot/jquery.flot.categories.js' %}"></script>
+		<script src="{% static 'assets/js/dashboard.sampledata.js' %}"></script>
+		<script src="{% static 'assets/js/chart.flot.sampledata.js' %}"></script>
+
+		<!-- Internal Newsticker js-->
+		<script src="{% static 'assets/plugins/newsticker/jquery.jConveyorTicker.js' %}"></script>
+		<script src="{% static 'assets/js/newsticker.js' %}"></script>
+
+		<!-- Eva-icons js -->
+		<script src="{% static 'assets/js/eva-icons.min.js' %}"></script>
+
+		<!-- Sidebar js -->
+		<script src="{% static 'assets/plugins/side-menu/sidemenu.js' %}"></script>
+
+		<!-- right-sidebar js -->
+		<script src="{% static 'assets/plugins/sidebar/sidebar.js' %}"></script>
+		<script src="{% static 'assets/plugins/sidebar/sidebar-custom.js' %}"></script>
+
+		<!-- Rating js-->
+		<script src="{% static 'assets/plugins/rating/jquery.rating-stars.js' %}"></script>
+		<script src="{% static 'assets/plugins/rating/jquery.barrating.js' %}"></script>
+
+		<!-- Internal Nice-select js-->
+		<script src="{% static 'assets/plugins/jquery-nice-select/js/jquery.nice-select.js' %}"></script>
+		<script src="{% static 'assets/plugins/jquery-nice-select/js/nice-select.js' %}"></script>
 
 
-{% comment %} 
+		<!-- Sticky js -->
+		<script src="{% static 'assets/js/sticky.js' %}"></script>
 
+		<!-- index js -->
+		<script src="{% static 'assets/js/dashboard.js' %}"></script>
 
-
-<body>
-  <header id="web_header">
-    <div class="top_bar">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-sm-4 text-start">
-            <div id="google_translate_element"></div>
-          </div>
-          <div class="col-sm-4 text-center">
-            <div class="logo">
-              <img class="img-fluid" src="https://i.ibb.co/nL7RWDQ/logo.png" alt="">
-            </div>
-          </div>
-          <div class="col-sm-4 text-end">
-            <div class="login_sign_up">
-              {% if user.is_authenticated %}
-
-              
-              
-
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <p>{{user.first_name}}</p>
-                  </a>
-
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a type="button" href="{% url 'dashboard' %}" class="btn sign_up">Dashboard</a>
-
-                    <a type="button" href="{% url 'updatepassword' %}" class="btn sign_up">Update Password</a>
-                    <a type="button" href="{% url 'logoutProcess' %}" class="btn login">Logout</a>
-                  </div>
-                </li>
-              </ul>
-
-              {% else %}
-              <a type="button" href="{% url 'loginProcess' %}" class="btn login">Login</a>
-              <a type="button" href="{% url 'signup' %}" class="btn sign_up">Sign-up</a>
-
-
-
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="bottom_header">
-      <nav class="navbar navbar-expand-lg navbar-light py-2">
-        <div class="container">
-
-          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto ">
-            <svg class="bi me-2" width="40" height="32">
-              <use xlink:href="#bootstrap"></use>
-            </svg>
-            <span class="fs-4"> </span>
-          </a>
-
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class=" "><i class="fal fa-bars"></i></span>
-          </button>
-          <div class="navbar-collapse collapse " id="navbarNavDropdown">
-            <ul class="nav nav-pills mx-auto">
-              <li class="nav-item"><a href="#" class="nav-link" aria-current="features">Features</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Resources</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Company</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">App Center</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Extra tools</a></li>
-            </ul>
-
-
-
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
-  {% block content %}
-  {% endblock content %}
-
-  <footer id="web_footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8">
-          <div class="top_footer_details">
-            <div class="select_country">
-              <select class="form-select" aria-label="Default select example">
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-            <div class="contect_no">
-              <h1>+1 (900) 000 - 0000</h1>
-              <p><span class="status_rount"></span><span class="user_status">offline</span></p>
-            </div>
-            <div class="time_address">
-              <p class="time">10:00 AM - 6:00 PM (EDT), Monday - Friday</p>
-              <p>Semrush Inc. 800 Boylston Street Suite 2475 Boston, MA 02199</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 text-center">
-          <a class="footer_top_button" href="#">Get started with Semrush!</a>
-          <a class="price_detail" href="#">or see our plans & pricing</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="footer_email_address">
-          <div class="col-lg-12">
-            <div class="footer_email_address_detail">
-              <address>USA, 800 Boylston Street, Suite 2475, Boston, MA 02199</address>
-              <a class="web_emial" href="#"><i class="fas fa-envelope"></i> mail@yourmail.com</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-8">
-          <div class="menu_wrp">
-            <div class="footer_menu">
-              <div class="footer_menu_title">Semrush</div>
-              <ul class="footer_menu_items">
-                <li><a href="#">Features</a></li>
-                <li><a href="#">
-                    Pricing</a></li>
-                <li><a href="#">Success Stories</a></li>
-                <li><a href="#">Stats and Facts</a></li>
-                <li><a href="#">Data Studies</a></li>
-                <li><a href="#">News</a></li>
-                <li><a href="#">Custom Report</a></li>
-              </ul>
-            </div>
-            <div class="footer_menu">
-              <div class="footer_menu_title">Help</div>
-              <ul class="footer_menu_items">
-                <li><a href="#">Knowledge Base</a></li>
-                <li><a href="#"> Academy</a></li>
-                <li><a href="#">Semrush API</a></li>
-              </ul>
-            </div>
-            <div class="footer_menu">
-              <div class="footer_menu_title">Community</div>
-              <ul class="footer_menu_items">
-                <li><a href="#">Semrush Blog</a></li>
-                <li><a href="#">Webinars</a></li>
-                <li><a href="#">Events</a></li>
-              </ul>
-            </div>
-            <div class="footer_menu">
-              <div class="footer_menu_title">More tools</div>
-              <ul class="footer_menu_items">
-                <li><a href="#">Analytics Reports</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Content Marketplace</a></li>
-                <li><a href="#">Agency Partners</a></li>
-                <li><a href="#">Affiliate Program</a></li>
-                <li><a href="#">SEOquake</a></li>
-                <li><a href="#">Sensor</a></li>
-                <li><a href="#">Amazon Tools</a></li>
-                <li><a href="#">Prowly</a></li>
-                <li><a href="#">App Center</a></li>
-              </ul>
-            </div>
-            <div class="footer_menu">
-              <div class="footer_menu_title">Company</div>
-              <ul class="footer_menu_items">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Newsroom</a></li>
-                <li><a href="#">Partners</a></li>
-                <li><a href="#">Legal Info</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Security Info</a></li>
-                <li><a href="#">For Investors</a></li>
-                <li><a href="#">Contact Us</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <div class="footer_menu">
-            <div class="footer_menu_title">Follow us</div>
-            <ul class="footer_menu_items">
-              <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-              <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-              <li><a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
-              <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-              <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
-              <li><a href="#"><i class="fab fa-pinterest-p"></i> Pinterest</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <div class="srf-menu">
-            <div class="footer_menu_title">Language</div>
-            <form>
-              <ul class="footer_menu_items">
-                <li><button class="language_btn">
-                    English
-                  </button></li>
-                <li><button class="language_btn">
-                    Español
-                  </button></li>
-                <li><button class="language_btn">
-                    Deutsch
-                  </button></li>
-                <li><button class="language_btn">
-                    Français
-                  </button></li>
-                <li><button class="language_btn">
-                    Italiano
-                  </button></li>
-                <li><button class="language_btn">
-                    Português (Brasil)
-                  </button></li>
-                <li><button class="language_btn">
-                    Русский
-                  </button></li>
-                <li><button class="language_btn">
-                    Tiếng Việt
-                  </button></li>
-                <li><button class="language_btn">
-                    Türkçe
-                  </button></li>
-                <li><button class="language_btn">
-                    中文
-                  </button></li>
-                <li><button class="language_btn">
-                    日本語
-                  </button></li>
-                <li><button class="language_btn">
-                    한국어
-                  </button></li>
-              </ul>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-  {% block script %}
-
-  {% endblock %}
-
-
-
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-    crossorigin="anonymous"></script>
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL }, 'google_translate_element');
-    }
-  </script>
-
-  <script type="text/javascript"
-    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> {% endcomment %}
-
-</body>
+		<!-- custom js -->
+		<script src="{% static 'assets/js/custom.js' %}"></script>
+    {% block script %}
+    {% endblock %}
+  </body>
 
 </html>
+
