@@ -17,7 +17,132 @@
     .jctkr-wrapper.jctkr-initialized ul {
         display: flex;
     }
+
+    .__web-inspector-hide-shortcut__ {
+        visibility: visible !important;
+    }
+
+    .crypto_icon img {
+        height: 25px !important;
+        width: 25px !important;
+        min-width: 25px;
+        margin: auto 0;
+    }
+
+    .crypto_card {
+        align-items: center !important;
+    }
+
+    .financial_title {
+        text-align: center;
+    }
+
+    .market_search_button {
+        padding: 6px 17px;
+        height: fit-content;
+        background-color: #5965f9;
+        color: #fff;
+    }
+
+    .price_data_table_wrp table,
+    .search_table_wrp table,
+    .symbol_data_table {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    th.financial_value,
+    .search_table_wrp table tbody tr td,
+    .symbol_data_table tr td {
+        font-size: 11px;
+        letter-spacing: .5px;
+        color: #8587a7;
+    }
+
+    td.financial_title,
+    .search_table_wrp table tbody tr th,
+    .symbol_data_table tr th {
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        color: #fff !important;
+        padding-top: 5px !important;
+    }
+
+    .search_table_wrp table tbody tr th {
+        padding: 0.75rem !important;
+    }
+
+    .price_data_table_wrp table thead tr th {
+        color: #fff;
+
+    }
+
+    .price_data_table_wrp table tbody tr th {
+        background-color: #ffffff00 !important;
+    }
+
+    .market_search_bar {
+        margin-bottom: 16px;
+    }
+
+    input.market_search_bar:focus {
+        background-color: rgba(66, 71, 100, 0.4);
+        border: 1px solid rgba(226, 232, 245, 0.2) !important;
+    }
+
+    .price_data_table_wrp .pagination {
+        justify-content: center;
+    }
+
+    .price_data_table_wrp .pagination .page-item .page-link {
+        line-height: 1.5;
+    }
+
+    .statistical_metrics_title h6 {
+        color: #fff;
+        margin-bottom: 0;
+        margin-bottom: 10px;
+
+    }
+
+    .statistical_metrics_title {
+        border-bottom: 1px solid rgba(227, 231, 237, 0.1);
+        margin-bottom: 10px;
+    }
+
+    .statistical_metrics_chart {
+        margin: 10px 0;
+    }
+
+    .statistical_metrics_chart_wrp {
+        padding: 10px;
+    }
+
+    .financial_market_search {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    .financial_market_search .visualized_statistical_metrics {
+        margin-bottom: 50px;
+    }
+
+    select#crypto_select {
+        background-color: #ffffff12;
+        color: #fff;
+        border: 1px solid rgba(227, 231, 237, 0.1);
+        font-size: 14px;
+        font-weight: normal;
+    }
+
+    select#crypto_select option {
+        font-size: 14px;
+        font-weight: normal;
+    }
 </style>
+
+
+
+
 
 {% endblock %}
 
@@ -493,18 +618,18 @@
                 <div class="js-conveyor-example">
                     <ul class="news-crypto">
                         <li>
-                            <div class="crypto-card">
+                            <div class="crypto-card" id="rep_data_history">
                                 <div class="row">
-                                    <div class="d-flex">
-                                        <div class="my-auto">
+                                    <div class="d-flex crypto_card">
+                                        <div class="my-auto crypto_icon">
                                             <img src="{% static 'assets/img/crypto-currencies/round-outline/Augur.svg' %}"
                                                 class="w-6 h-6 mt-0" alt="">
                                         </div>
                                         <div class="ml-3">
                                             <p class="mb-1 tx-13">REP / USDT</p>
-                                            <div class="m-0 tx-13 text-warning">$<span class="rep_data"></span><span
-                                                    class="text-danger ml-2"><i
-                                                        class="ion-arrow-down-c mr-1"></i>-0.78%</span></div>
+                                            <div class="m-0 tx-13 text-warning">$<span class="rep_data"></span>
+                                                <span class="tx-13" id="rep_history"></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -512,18 +637,18 @@
                         </li>
 
                         <li>
-                            <div class="crypto-card">
+                            <div class="crypto-card" id="bts_data_history">
                                 <div class="row">
-                                    <div class="d-flex">
-                                        <div class="">
+                                    <div class="d-flex crypto_card">
+                                        <div class="crypto_icon">
                                             <img src="{% static 'assets/img/crypto-currencies/round-outline/BitShares.svg' %}"
                                                 class="w-6 h-6 mt-0" alt="">
                                         </div>
                                         <div class="ml-3">
                                             <p class="mb-1 tx-13">BTS / USDT</p>
-                                            <div class="m-0 tx-13 text-warning">$<span class="bts_data"></span><span
-                                                    class="text-success ml-2"><i
-                                                        class="ion-arrow-up-c mr-1"></i>-02.25%</span></div>
+                                            <div class="m-0 tx-13 text-warning">$<span class="bts_data"></span>
+                                                <span class="ml-2" id="bts_history"></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -531,18 +656,17 @@
                         </li>
 
                         <li>
-                            <div class="crypto-card">
+                            <div class="crypto-card" id="dash_data_history">
                                 <div class="row">
-                                    <div class=" d-flex">
-                                        <div class="my-auto">
+                                    <div class="d-flex crypto_card">
+                                        <div class="my-auto crypto_icon">
                                             <img src="{% static 'assets/img/crypto-currencies/round-outline/Dash.svg' %}"
                                                 class="w-6 h-6 mt-0" alt="">
                                         </div>
                                         <div class="ml-3">
                                             <p class="mb-1 tx-13">Dash / USDT</p>
                                             <div class="m-0 tx-13 text-warning">$<span class="dash_data"></span><span
-                                                    class="text-success ml-2"><i
-                                                        class="ion-arrow-up-c mr-1"></i>-11.85%%</span></div>
+                                                    class="text-success ml-2" id="dash_history"></span></div>
                                         </div>
                                     </div>
 
@@ -550,18 +674,18 @@
                             </div>
                         </li>
                         <li>
-                            <div class="crypto-card">
+                            <div class="crypto-card" id="eur_data_history">
                                 <div class="row">
-                                    <div class=" d-flex">
-                                        <div class="">
+                                    <div class="d-flex crypto_card">
+                                        <div class="crypto_icon">
                                             <img src="{% static 'assets/img/crypto-currencies/round-outline/EOS.svg' %}"
                                                 class="w-6 h-6 mt-0" alt="">
                                         </div>
                                         <div class="ml-3">
                                             <p class="mb-1 tx-13">EUR / USDT</p>
-                                            <div class="m-0 tx-13 text-warning">$<span class="eur_data"></span><span
-                                                    class="text-danger ml-2"><i
-                                                        class="ion-arrow-down-c mr-1"></i>-0.78%</span></div>
+                                            <div class="m-0 tx-13 text-warning">$<span class="eur_data"></span>
+                                                <span class="text-success ml-2" id="eur_history"></span>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -569,18 +693,17 @@
                             </div>
                         </li>
                         <li>
-                            <div class="crypto-card">
+                            <div class="crypto-card" id="eth_data_history">
                                 <div class="row">
-                                    <div class=" d-flex">
-                                        <div class="">
+                                    <div class="d-flex crypto_card">
+                                        <div class="crypto_icon">
                                             <img src="{% static 'assets/img/crypto-currencies/round-outline/Decred.svg' %}"
                                                 class="w-6 h-6 mt-0" alt="">
                                         </div>
                                         <div class="ml-3">
                                             <p class="mb-1 tx-13">ETH / USDT</p>
                                             <div class="m-0 tx-13 text-warning ">$<span class="eth_data"></span><span
-                                                    class="text-success ml-2"><i
-                                                        class="ion-arrow-up-c mr-1"></i>-0.32%</span></div>
+                                                    class="text-success ml-2" id="eth_history"></span></div>
                                         </div>
                                     </div>
 
@@ -588,18 +711,17 @@
                             </div>
                         </li>
                         <li>
-                            <div class="crypto-card">
+                            <div class="crypto-card" id="iota_data_history">
                                 <div class="row">
-                                    <div class=" d-flex">
-                                        <div class="">
+                                    <div class="d-flex crypto_card">
+                                        <div class="crypto_icon">
                                             <img src="{% static 'assets/img/crypto-currencies/round-outline/IOTA.svg' %}"
                                                 class="w-6 h-6 mt-0" alt="">
                                         </div>
                                         <div class="ml-3">
-                                            <p class="mb-1 tx-13">IOTA / USD</p>
+                                            <p class="mb-1 tx-13">IOTA / USDT</p>
                                             <div class="m-0 tx-13 text-warning">$<span class="iot_data"> ..</span><span
-                                                    class="text-danger ml-2"><i
-                                                        class="ion-arrow-down-c mr-1"></i>-0.78%</span></div>
+                                                    class="text-success ml-2" id="iota_history"></span></div>
                                         </div>
                                     </div>
 
@@ -607,54 +729,51 @@
                             </div>
                         </li>
                         <li>
-                            <div class="crypto-card">
+                            <div class="crypto-card" id="ltc_data_history">
                                 <div class="row">
-                                    <div class=" d-flex">
-                                        <div class="">
+                                    <div class="d-flex crypto_card">
+                                        <div class="crypto_icon">
                                             <img src="{% static 'assets/img/crypto-currencies/round-outline/Litecoin.svg' %}"
                                                 class="w-6 h-6 mt-0" alt="">
                                         </div>
                                         <div class="ml-3">
-                                            <p class="mb-1 tx-13">LTC / USD</p>
+                                            <p class="mb-1 tx-13">LTC / USDT</p>
                                             <div class="m-0 tx-13 text-warning">$<span class="ltc_data"></span><span
-                                                    class="text-success ml-2"><i
-                                                        class="ion-arrow-up-c mr-1"></i>-1.42%</span></div>
+                                                    class="text-success ml-2" id="ltc_history"></span></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <div class="crypto-card">
+                            <div class="crypto-card" id="xmr_data_history">
                                 <div class="row">
-                                    <div class=" d-flex">
-                                        <div class="">
+                                    <div class="d-flex crypto_card">
+                                        <div class="crypto_icon">
                                             <img src="{% static 'assets/img/crypto-currencies/round-outline/Monero.svg' %}"
                                                 class="w-6 h-6 mt-0" alt="">
                                         </div>
                                         <div class="ml-3">
-                                            <p class="mb-1 tx-13">XMR / EUR</p>
+                                            <p class="mb-1 tx-13">XMR / USDT</p>
                                             <div class="m-0 tx-13 text-warning">$<span class="xmr_data"></span><span
-                                                    class="text-danger ml-2"><i
-                                                        class="ion-arrow-down-c mr-1"></i>-0.78%</span></div>
+                                                    class="text-success ml-2" id="xmr_history"></span></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <div class="crypto-card">
+                            <div class="crypto-card" id="neo_data_history">
                                 <div class="row">
-                                    <div class=" d-flex">
-                                        <div class="">
+                                    <div class="d-flex crypto_card">
+                                        <div class="crypto_icon">
                                             <img src="{% static 'assets/img/crypto-currencies/round-outline/Netko-coin.svg' %}"
                                                 class="w-6 h-6 mt-0" alt="">
                                         </div>
                                         <div class="ml-3">
-                                            <p class="mb-1 tx-13">NEO / USD</p>
+                                            <p class="mb-1 tx-13">NEO / USDT</p>
                                             <div class="m-0 tx-13 text-warning">$<span class="neo_data"></span><span
-                                                    class="text-danger ml-2"><i
-                                                        class="ion-arrow-down-c mr-1"></i>-0.78%</span></div>
+                                                    class="text-success ml-2" id="neo_history"></span></div>
                                         </div>
                                     </div>
 
@@ -667,6 +786,247 @@
         </div>
     </div>
     <!-- /row -->
+
+    <!-- cryptop table -->
+    <div class="row">
+        <div class="col-lg-8">
+            <form action="">
+                <div class="search_table_wrp">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Ticker</th>
+                                <td><span id="ticker_name"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Date</th>
+                                <td><span id="date"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Time Frame</th>
+                                <td>Last 24 Hours</td>
+                            </tr>
+                            <tr>
+                                <th>Average Price(Every 5 minutes)</th>
+                                <td><span id="avg_price_crypto"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="financial_market_search">
+                        <form class="d-flex">
+                            <!-- <input class="form-control me-2 market_search_bar" id="cryptoSearch" type="search" placeholder="Search"
+                                aria-label="Search"> -->
+
+                            <select class="form-select crypto mr-3" id="crypto_select"
+                                aria-label="Default select example">
+                                <option value="BTSUSDT" selected>BTS/USDT</option>
+                                <option value="DASHUSDT">Dash/USDT</option>
+                                <option value="EURUSDT">EUR/USDT</option>
+                                <option value="ETHUSDT">ETH/USDT</option>
+                                <option value="IOTAUSDT">IOTA/USDT</option>
+                                <option value="LTCUSDT">LTC/USDT</option>
+                                <option value="XMRUSDT">XMR/USDT</option>
+                                <option value="NEOUSDT">NEO/USDT</option>
+                            </select>
+
+                            <button class="btn market_search_button" id="search_crypto" type="submit">Search</button>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="price_data_table_wrp">
+                    <table id="price_data_table" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td class="financial_title" colspan="8">Price</td>
+                            </tr>
+                            <tr>
+                                <th class="financial_date">Date</th>
+                                <th class="financial_date">Open</th>
+                                <th class="financial_date">High</th>
+                                <th class="financial_date">Low</th>
+                                <th class="financial_date">Close</th>
+                                <th class="financial_date">Volume</th>
+                                <th class="financial_date">Absolute Move </th>
+                                <th class="financial_date">Weekly Return</th>
+                            </tr>
+                        </thead>
+                        <tbody id="all_data">
+                            <tr>
+                                <th class="financial_value">23/5/21</th>
+                                <th class="financial_value">Open</th>
+                                <th class="financial_value">High</th>
+                                <th class="financial_value">Low</th>
+                                <th class="financial_value">Close</th>
+                                <th class="financial_value">Volume</th>
+                                <th class="financial_value">Absolute Move </th>
+                                <th class="financial_value">Weekly Return</th>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-4">
+            <div class="symbol_data_wrp">
+                <table class="table symbol_data_table">
+                    <tbody>
+                        <tr>
+                            <th>Current Stock Price</th>
+                            <td>$21</td>
+                        </tr>
+                        <tr>
+                            <th>Percent Change</th>
+                            <td>21%</td>
+                        </tr>
+                        <tr>
+                            <th>2 Week Return</th>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <th>Beta</th>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <th>Beta(7Day)</th>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <th>Beta(15Day)</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>52 Week High</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>52 Week Low</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>Mean</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>Absolute Mean Move</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>Variance</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>Std.Dev</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>2Std.Dev</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>3Std.Dev</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>Range Mean</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>Range Std.Dev</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>Biggest Loss</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>Smallest Loss</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>Biggest Move</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>Smallest Move</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>Historical Weekly Volatility</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>Projected Range</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>Projected Daily Move</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>Current Price </th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>Expected Price</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>Expected Price Down</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>Expected Price Daily High </th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>Expected Price Daily Low</th>
+                            <td>12</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="visualized_statistical_metrics">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="statistical_metrics_title">
+                    <h6>Metrics</h6>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="statistical_metrics_chart">
+                    Chart Section
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="statistical_metrics_chart">Chart Section</div>
+            </div>
+            <div class="col-lg-4">
+                <div class="statistical_metrics_chart">Chart Section</div>
+            </div>
+        </div>
+    </div>
+    <!-- /crypto table -->
 
     <!-- row -->
     <div class="row row-sm">
@@ -790,15 +1150,17 @@
                 <div class="card-body p-0">
                     <div class="">
                         <div class="list d-flex align-items-center border-bottom p-2 pl-3 pr-3 mt-0">
-                            <img class="w-6 h-6" src="{% static 'assets/img/crypto-currencies/round-outline/Bitcoin.svg' %}"
-                                alt="image">
+                            <img class="w-6 h-6"
+                                src="{% static 'assets/img/crypto-currencies/round-outline/Bitcoin.svg' %}" alt="image">
                             <div class="w-100 ml-3">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <p class="mt-1 mb-0 font-weight-semibold">BTC/USD</p>
-                                    <span class="ml-auto fs-15 mb-0 font-weight-semibold">$<span class="etc_data"></span></span>
+                                    <span class="ml-auto fs-15 mb-0 font-weight-semibold">$<span
+                                            class="etc_data"></span></span>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span class="text-success tx-13"><i class="fa fa-caret-up mr-1"></i>2.04%</span>
+                                    <span class="text-success tx-13" id="coinHistory"><i
+                                            class="fa fa-caret-up mr-1"></i>2.04%</span>
                                     <small class="text-muted ml-auto">340.5 USD</small>
                                 </div>
                             </div>
@@ -944,142 +1306,462 @@
             url: "/user/eth_data/",
             success: function (data) {
                 $('.eth_data').html(parseFloat(data.price).toFixed(4));
+                $.ajax({
+                    type: 'GET',
+                    url: "/user/iot_data/",
+                    success: function (data) {
+                        if (data != false && btc_value != 0) {
+                            $('.iot_data').html(parseFloat(data.price * btc_value).toFixed(4));
+                        }
+                        $.ajax({
+                            type: 'GET',
+                            url: "/user/rep_data/",
+                            success: function (data) {
+                                if (data != false) {
+                                    $('.rep_data').html(parseFloat(data.price).toFixed(4));
+                                }
+                                $.ajax({
+                                    type: 'GET',
+                                    url: "/user/bts_data/",
+                                    success: function (data) {
+                                        if (data != false) {
+                                            $('.bts_data').html(parseFloat(data.price).toFixed(4));
+                                        }
+                                        $.ajax({
+                                            type: 'GET',
+                                            url: "/user/dash_data/",
+                                            success: function (data) {
+                                                if (data != false) {
+                                                    $('.dash_data').html(parseFloat(data.price).toFixed(4));
+                                                }
+                                                $.ajax({
+                                                    type: 'GET',
+                                                    url: "/user/eur_data/",
+                                                    success: function (data) {
+                                                        if (data != false) {
+                                                            $('.eur_data').html(parseFloat(data.price).toFixed(4));
+                                                        }
+                                                        $.ajax({
+                                                            type: 'GET',
+                                                            url: "/user/ltc_data/",
+                                                            success: function (data) {
+                                                                if (data != false) {
+                                                                    $('.ltc_data').html(parseFloat(data.price).toFixed(4));
+                                                                }
+                                                                $.ajax({
+                                                                    type: 'GET',
+                                                                    url: "/user/xmr_data/",
+                                                                    success: function (data) {
+                                                                        if (data != false) {
+                                                                            $('.xmr_data').html(parseFloat(data.price).toFixed(4));
+                                                                        }
+                                                                        $.ajax({
+                                                                            type: 'GET',
+                                                                            url: "/user/neo_data/",
+                                                                            success: function (data) {
+                                                                                if (data != false) {
+                                                                                    $('.neo_data').html(parseFloat(data.price).toFixed(4));
+                                                                                }
+                                                                            },
+
+                                                                        });
+                                                                    },
+
+                                                                });
+                                                            },
+
+                                                        });
+                                                    },
+
+                                                });
+                                            },
+
+                                        });
+
+                                    },
+
+                                });
+                            },
+
+                        });
+
+
+                    },
+
+                });
+
             },
-            timeout: 1000
+
         });
 
     };
-    setInterval(ajax_eth, interval);
+    setInterval(ajax_eth, 1000);
 
-    var ajax_iot = function () {
+    // var ajax_iot = function () {
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: "/user/iot_data/",
+    //         success: function (data) {
+    //             if (data != false && btc_value != 0) {
+    //                 $('.iot_data').html(parseFloat(data.price * btc_value).toFixed(4));
+    //             }
+    //         },
+    //         timeout: 1000
+    //     });
+
+    // };
+    // setInterval(ajax_iot, interval);
+
+    // var ajax_rep = function () {
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: "/user/rep_data/",
+    //         success: function (data) {
+    //             if (data != false) {
+    //                 $('.rep_data').html(parseFloat(data.price).toFixed(4));
+    //             }
+    //         },
+    //         timeout: 1000
+    //     });
+
+    // };
+    // setInterval(ajax_rep, interval);
+
+    // var ajax_bts = function () {
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: "/user/bts_data/",
+    //         success: function (data) {
+    //             if (data != false) {
+    //                 $('.bts_data').html(parseFloat(data.price).toFixed(4));
+    //             }
+    //         },
+    //         timeout: 1000
+    //     });
+
+    // };
+    // setInterval(ajax_bts, interval);
+
+    // var ajax_dash = function () {
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: "/user/dash_data/",
+    //         success: function (data) {
+    //             if (data != false) {
+    //                 $('.dash_data').html(parseFloat(data.price).toFixed(4));
+    //             }
+    //         },
+    //         timeout: 1000
+    //     });
+
+    // };
+    // setInterval(ajax_dash, interval);
+
+    // var ajax_eur = function () {
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: "/user/eur_data/",
+    //         success: function (data) {
+    //             if (data != false) {
+    //                 $('.eur_data').html(parseFloat(data.price).toFixed(4));
+    //             }
+    //         },
+    //         timeout: 1000
+    //     });
+
+    // };
+    // setInterval(ajax_eur, interval);
+
+    // var ajax_ltc = function () {
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: "/user/ltc_data/",
+    //         success: function (data) {
+    //             if (data != false) {
+    //                 $('.ltc_data').html(parseFloat(data.price).toFixed(4));
+    //             }
+    //         },
+    //         timeout: 1000
+    //     });
+
+    // };
+    // setInterval(ajax_ltc, interval);
+
+    // var ajax_xmr = function () {
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: "/user/xmr_data/",
+    //         success: function (data) {
+    //             if (data != false) {
+    //                 $('.xmr_data').html(parseFloat(data.price).toFixed(4));
+    //             }
+    //         },
+    //         timeout: 1000
+    //     });
+
+    // };
+    // setInterval(ajax_xmr, interval);
+
+    // var ajax_neo = function () {
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: "/user/neo_data/",
+    //         success: function (data) {
+    //             if (data != false) {
+    //                 $('.neo_data').html(parseFloat(data.price).toFixed(4));
+    //             }
+    //         },
+    //         timeout: 1000
+    //     });
+
+    // };
+    // setInterval(ajax_neo, interval);
+
+    var ajax_per_btc = function () {
         $.ajax({
             type: 'GET',
-            url: "/user/iot_data/",
+            url: "/user/history_data/BTCUSDT",
             success: function (data) {
-                if (data != false && btc_value != 0) {
-                    $('.iot_data').html(parseFloat(data.price * btc_value).toFixed(4));
+                $("#coinHistory").removeClass("text-success")
+                $("#coinHistory").empty()
+                if (data.indicator == true) {
+                    $("#coinHistory").addClass("text-success")
+                    $("#coinHistory").append(`<i class="fa fa-caret-up mr-1"></i>${data.per_increase.toFixed(4)}%`)
+                } else {
+                    $("#coinHistory").addClass("text-danger")
+                    $("#coinHistory").append(`<i class="fa fa-caret-down mr-1"></i>${data.per_increase.toFixed(4)}%`)
                 }
             },
-            timeout: 1000
+            timeout: 5000
         });
 
     };
-    setInterval(ajax_iot, interval);
+    setInterval(ajax_per_btc, 5000);
 
-    var ajax_rep = function () {
+
+
+
+
+    $("#search_crypto").click(function (e) {
+        e.preventDefault();
+        var crypto_val = document.getElementById("crypto_select");
+        var cryptoCoin = crypto_val.value;
+        document.getElementById("ticker_name").innerHTML = cryptoCoin;
+        var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
+        document.getElementById("date").innerHTML = utc;
+
         $.ajax({
             type: 'GET',
-            url: "/user/rep_data/",
+            url: "/user/all_data/" + cryptoCoin,
             success: function (data) {
-                if (data != false) {
-                    $('.rep_data').html(parseFloat(data.price).toFixed(4));
-                }
+                $("#all_data").empty()
+                data.forEach(element => {
+                    var open_time = element[0]
+                    date_epoch = String(new Date(open_time))
+                    var d = date_epoch.slice(0, 14);
+                    var t = date_epoch.slice(16, 24);
+                    var open = element[1]
+                    var high = element[2]
+                    var low = element[3]
+                    var close = element[4]
+                    var Volume = element[5]
+
+                    $("#all_data").append(`
+                    <tr>
+                            <th class="financial_value">${d}<br> ${t}</th>
+                            <th class="financial_value">${parseFloat(open).toFixed(3)}</th>
+                            <th class="financial_value">${parseFloat(high).toFixed(3)}</th>
+                            <th class="financial_value">${parseFloat(low).toFixed(3)}</th>
+                            <th class="financial_value">${parseFloat(close).toFixed(3)}</th>
+                            <th class="financial_value">${parseFloat(Volume).toFixed(3)}</th>
+                            <th class="financial_value">Absolute Move </th>
+                            <th class="financial_value">Weekly Return</th>
+                        </tr>
+                    `)
+
+                });
+                $.ajax({
+                    type: 'GET',
+                    url: "/user/avg_price/" + cryptoCoin,
+                    success: function (data) {
+                        document.getElementById("avg_price_crypto").innerHTML = (parseFloat(data.price).toFixed(4));
+                    },
+                    
+                });
             },
-            timeout: 1000
+
         });
+    });
 
-    };
-    setInterval(ajax_rep, interval);
 
-    var ajax_bts = function () {
+
+    var ajax_per_rep = function () {
         $.ajax({
             type: 'GET',
-            url: "/user/bts_data/",
+            url: "/user/history_data/REPUSDT",
             success: function (data) {
-                if (data != false) {
-                    $('.bts_data').html(parseFloat(data.price).toFixed(4));
+                if (data.indicator == true) {
+                    $("#rep_data_history #rep_history").removeClass("text-danger")
+                    $("#rep_data_history #rep_history").addClass("text-success")
+                    $("#rep_data_history #rep_history").html(`<i class="fa fa-caret-up mr-1"></i>${data.per_increase.toFixed(4)}%`)
+                } else {
+
+                    $("#rep_data_history #rep_history").removeClass("text-success")
+                    $("#rep_data_history #rep_history").addClass("text-danger")
+                    $("#rep_data_history #rep_history").html(`<i class="fa fa-caret-down mr-1"></i>${data.per_increase.toFixed(4)}%`)
+
                 }
+                // sequence ajax
+
+                $.ajax({
+                    type: 'GET',
+                    url: "/user/history_data/BTSUSDT",
+                    success: function (data) {
+
+                        $("#bts_data_history #bts_history").removeClass("text-success")
+                        $("#bts_data_history #bts_history").empty()
+                        if (data.indicator == true) {
+                            $("#bts_data_history #bts_history").addClass("text-success")
+                            $("#bts_data_history #bts_history").removeClass("text-danger")
+
+                            $("#bts_data_history #bts_history").append(`<i class="fa fa-caret-up mr-1"></i>${data.per_increase.toFixed(4)}%`)
+                        } else {
+                            $("#bts_data_history #bts_history").addClass("text-danger")
+                            $("#bts_data_history #bts_history").removeClass("text-success")
+
+                            $("#bts_data_history #bts_history").append(`<i class="fa fa-caret-down mr-1"></i>${data.per_increase.toFixed(4)}%`)
+                        }
+                        $.ajax({
+                            type: 'GET',
+                            url: "/user/history_data/DASHUSDT",
+                            success: function (data) {
+
+                                $("#dash_data_history #dash_history").removeClass("text-success")
+                                $("#dash_data_history #dash_history").empty()
+                                if (data.indicator == true) {
+                                    $("#dash_data_history #dash_history").addClass("text-success")
+                                    $("#dash_data_history #dash_history").append(`<i class="fa fa-caret-up mr-1"></i>${data.per_increase.toFixed(4)}%`)
+                                } else {
+                                    $("#dash_data_history #dash_history").addClass("text-danger")
+                                    $("#dash_data_history #dash_history").append(`<i class="fa fa-caret-down mr-1"></i>${data.per_increase.toFixed(4)}%`)
+                                }
+                                $.ajax({
+                                    type: 'GET',
+                                    url: "/user/history_data/EURUSDT",
+                                    success: function (data) {
+                                        $("#eur_data_history #eur_history").removeClass("text-success")
+                                        $("#eur_data_history #eur_history").empty()
+                                        if (data.indicator == true) {
+                                            $("#eur_data_history #eur_history").addClass("text-success")
+                                            $("#eur_data_history #eur_history").append(`<i class="fa fa-caret-up mr-1"></i>${data.per_increase.toFixed(4)}%`)
+                                        } else {
+                                            $("#eur_data_history #eur_history").addClass("text-danger")
+                                            $("#eur_data_history #eur_history").append(`<i class="fa fa-caret-down mr-1"></i>${data.per_increase.toFixed(4)}%`)
+                                        }
+                                        $.ajax({
+                                            type: 'GET',
+                                            url: "/user/history_data/ETHUSDT",
+                                            success: function (data) {
+                                                $("#eth_data_history #eth_history").removeClass("text-success")
+                                                $("#eth_data_history #eth_history").empty()
+                                                if (data.indicator == true) {
+                                                    $("#eth_data_history #eth_history").addClass("text-success")
+                                                    $("#eth_data_history #eth_history").append(`<i class="fa fa-caret-up mr-1"></i>${data.per_increase.toFixed(4)}%`)
+                                                } else {
+                                                    $("#eth_data_history #eth_history").addClass("text-danger")
+                                                    $("#eth_data_history #eth_history").append(`<i class="fa fa-caret-down mr-1"></i>${data.per_increase.toFixed(4)}%`)
+                                                }
+                                                $.ajax({
+                                                    type: 'GET',
+                                                    url: "/user/history_data/IOTAUSDT",
+                                                    success: function (data) {
+                                                        $("#iota_data_history #iota_history").removeClass("text-success")
+                                                        $("#iota_data_history #iota_history").empty()
+                                                        if (data.indicator == true) {
+                                                            $("#iota_data_history #iota_history").addClass("text-success")
+                                                            $("#iota_data_history #iota_history").append(`<i class="fa fa-caret-up mr-1"></i>${data.per_increase.toFixed(4)}%`)
+                                                        } else {
+                                                            $("#iota_data_history #iota_history").addClass("text-danger")
+                                                            $("#iota_data_history #iota_history").append(`<i class="fa fa-caret-down mr-1"></i>${data.per_increase.toFixed(4)}%`)
+                                                        }
+                                                        $.ajax({
+                                                            type: 'GET',
+                                                            url: "/user/history_data/LTCUSDT",
+                                                            success: function (data) {
+                                                                $("#ltc_data_history #ltc_history").removeClass("text-success")
+                                                                $("#ltc_data_history #ltc_history").empty()
+                                                                if (data.indicator == true) {
+                                                                    $("#ltc_data_history #ltc_history").addClass("text-success")
+                                                                    $("#ltc_data_history #ltc_history").append(`<i class="fa fa-caret-up mr-1"></i>${data.per_increase.toFixed(4)}%`)
+                                                                } else {
+                                                                    $("#ltc_data_history #ltc_history").addClass("text-danger")
+                                                                    $("#ltc_data_history #ltc_history").append(`<i class="fa fa-caret-down mr-1"></i>${data.per_increase.toFixed(4)}%`)
+                                                                }
+                                                                $.ajax({
+                                                                    type: 'GET',
+                                                                    url: "/user/history_data/XMRUSDT",
+                                                                    success: function (data) {
+                                                                        $("#xmr_data_history #xmr_history").removeClass("text-success")
+                                                                        $("#xmr_data_history #xmr_history").empty()
+                                                                        if (data.indicator == true) {
+                                                                            $("#xmr_data_history #xmr_history").addClass("text-success")
+                                                                            $("#xmr_data_history #xmr_history").append(`<i class="fa fa-caret-up mr-1"></i>${data.per_increase.toFixed(4)}%`)
+                                                                        } else {
+                                                                            $("#xmr_data_history #xmr_history").addClass("text-danger")
+                                                                            $("#xmr_data_history #xmr_history").append(`<i class="fa fa-caret-down mr-1"></i>${data.per_increase.toFixed(4)}%`)
+                                                                        }
+                                                                        $.ajax({
+                                                                            type: 'GET',
+                                                                            url: "/user/history_data/NEOUSDT",
+                                                                            success: function (data) {
+
+                                                                                $("#neo_data_history #neo_history").removeClass("text-success")
+                                                                                $("#neo_data_history #neo_history").empty()
+                                                                                if (data.indicator == true) {
+                                                                                    $("#neo_data_history #neo_history").addClass("text-success")
+                                                                                    $("#neo_data_history #neo_history").append(`<i class="fa fa-caret-up mr-1"></i>${data.per_increase.toFixed(4)}%`)
+                                                                                } else {
+                                                                                    $("#neo_data_history #neo_history").addClass("text-danger")
+                                                                                    $("#neo_data_history #neo_history").append(`<i class="fa fa-caret-down mr-1"></i>${data.per_increase.toFixed(4)}%`)
+                                                                                }
+                                                                            },
+
+                                                                        });
+                                                                    },
+
+                                                                });
+
+                                                            },
+
+                                                        });
+                                                    },
+
+                                                });
+
+                                            },
+
+                                        });
+                                    },
+
+
+
+                                });
+
+                            },
+
+
+                        });
+                    },
+
+                });
             },
-            timeout: 1000
+
         });
 
     };
-    setInterval(ajax_bts, interval);
-
-    var ajax_dash = function () {
-        $.ajax({
-            type: 'GET',
-            url: "/user/dash_data/",
-            success: function (data) {
-                if (data != false) {
-                    $('.dash_data').html(parseFloat(data.price).toFixed(4));
-                }
-            },
-            timeout: 1000
-        });
-
-    };
-    setInterval(ajax_dash, interval);
-
-    var ajax_eur = function () {
-        $.ajax({
-            type: 'GET',
-            url: "/user/eur_data/",
-            success: function (data) {
-                if (data != false) {
-                    $('.eur_data').html(parseFloat(data.price).toFixed(4));
-                }
-            },
-            timeout: 1000
-        });
-
-    };
-    setInterval(ajax_eur, interval);
-
-    var ajax_ltc = function () {
-        $.ajax({
-            type: 'GET',
-            url: "/user/ltc_data/",
-            success: function (data) {
-                if (data != false) {
-                    $('.ltc_data').html(parseFloat(data.price).toFixed(4));
-                }
-            },
-            timeout: 1000
-        });
-
-    };
-    setInterval(ajax_ltc, interval);
-
-    var ajax_xmr = function () {
-        $.ajax({
-            type: 'GET',
-            url: "/user/xmr_data/",
-            success: function (data) {
-                console.log(data)
-                if (data != false) {
-                    $('.xmr_data').html(parseFloat(data.price).toFixed(4));
-                }
-            },
-            timeout: 1000
-        });
-
-    };
-    setInterval(ajax_xmr, interval);
-
-    var ajax_neo = function () {
-        $.ajax({
-            type: 'GET',
-            url: "/user/neo_data/",
-            success: function (data) {
-                console.log(data)
-                if (data != false) {
-                    $('.neo_data').html(parseFloat(data.price).toFixed(4));
-                }
-            },
-            timeout: 1000
-        });
-
-    };
-    setInterval(ajax_neo, interval);
 
 
-
-
-
-
-
-
+    setInterval(ajax_per_rep, 5000);
 </script>
 
 {% endblock %}

@@ -16,6 +16,8 @@ import json
 import os
 from datetime import datetime
 import time
+import itertools
+from collections import OrderedDict
 import json
 from django.conf import settings
 from binance.client import Client
@@ -196,14 +198,65 @@ def get_latest_neo(request):
     print(neo_data)
     return JsonResponse(neo_data,safe=False)
 
+def crypto_all_data(request,crypto):
+    klines = client.get_historical_klines(crypto, Client.KLINE_INTERVAL_30MINUTE, "1 day ago UTC")
+    print(klines)
+    return JsonResponse(klines,safe=False)
+
 def crypto_history(request,crypto):
-    klines = client.get_historical_klines("ETHUSDT", Client.KLINE_INTERVAL_1MINUTE, "1 day ago UTC")
+    klines = client.get_historical_klines(crypto, Client.KLINE_INTERVAL_1MINUTE, "1 day ago UTC")
     history_data = {}
+    print(klines)
     for i in klines:
-        time = datetime.fromtimestamp(int(str(i[6])[:-2])).strftime("%m/%d/%Y, %H:%M:%S")
+        s,ms = divmod(int(i[6]),1000)
+        time = datetime.fromtimestamp(s).strftime("%m/%d/%Y, %H:%M:%S")
         history_data[time] = i[4]
-    print(history_data)
-    return JsonResponse(history_data,safe=False)
+    # print(history_data)
+    first = list(history_data.values())[0]
+    last = list(history_data.values())[-1]
+    res = dict(reversed(list(history_data.items())))
+    dict_last = dict(itertools.islice(res.items(),50))
+    per_increase = ((float(first) - float(last)) / float(first)) * 100
+    
+    indicator = None
+    if per_increase < 0:
+        indicator = False
+    else:
+        indicator = True
+        
+    # dict_last['per_increase'] = per_increase
+    # dict_last['indicator'] = indicator
+    return JsonResponse(dict_last,safe=False)
+
+
+def crypto_history_data(request,crypto):
+    klines = client.get_historical_klines(crypto, Client.KLINE_INTERVAL_1MINUTE, "1 day ago UTC")
+    history_data = {}
+    print(klines)
+    for i in klines:
+        s,ms = divmod(int(i[6]),1000)
+        time = datetime.fromtimestamp(s).strftime("%m/%d/%Y, %H:%M:%S")
+        history_data[time] = i[4]
+    # print(history_data)
+    first = list(history_data.values())[0]
+    last = list(history_data.values())[-1]
+    res = dict(reversed(list(history_data.items())))
+    dict_last = dict(itertools.islice(res.items(),50))
+    per_increase = ((float(first) - float(last)) / float(first)) * 100
+    
+    indicator = None
+    if per_increase < 0:
+        indicator = False
+    else:
+        indicator = True
+        
+    dict_last['per_increase'] = per_increase
+    dict_last['indicator'] = indicator
+    return JsonResponse(dict_last,safe=False)
+
+def average_price(request,crypto):
+    avg_price = client.get_avg_price(symbol=crypto)
+    return JsonResponse(avg_price,safe=False)
 
 def demo(request):
     return render(request, 'demo.html')

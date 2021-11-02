@@ -20,7 +20,10 @@ urlpatterns = [
     path('ltc_data/',get_latest_ltc),
     path('xmr_data/',get_latest_xmr),
     path('neo_data/',get_latest_neo),
+    path('all_data/<str:crypto>',crypto_all_data),
     path('history/<str:crypto>',crypto_history),
+    path('history_data/<str:crypto>',crypto_history_data),
+    path('avg_price/<str:crypto>',average_price),
     path('demo', demo, name='demo'),
   
 ]
