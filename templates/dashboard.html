@@ -7,12 +7,12 @@
         width: fit-content;
     }
 
-    .main-header-left {
+    /* .main-header-left {
         position: absolute;
         right: 15px;
         top: 15px;
         z-index: 99999;
-    }
+    } */
 
     .jctkr-wrapper.jctkr-initialized ul {
         display: flex;
@@ -44,6 +44,18 @@
         color: #fff;
     }
 
+    .search_table_wrp .table input {
+        width: auto;
+        margin: 0;
+    }
+
+    select#crypto_time {
+        border: 1px solid rgba(227, 231, 237, 0.1);
+        background-color: #ffffff12;
+        color: #fff;
+        font-size: 14px;
+    }
+
     .price_data_table_wrp table,
     .search_table_wrp table,
     .symbol_data_table {
@@ -52,7 +64,8 @@
 
     th.financial_value,
     .search_table_wrp table tbody tr td,
-    .symbol_data_table tr td {
+    .symbol_data_table tr td,
+    #all_data tr .financial_value {
         font-size: 11px;
         letter-spacing: .5px;
         color: #8587a7;
@@ -61,7 +74,7 @@
     td.financial_title,
     .search_table_wrp table tbody tr th,
     .symbol_data_table tr th {
-        font-size: 14px !important;
+        font-size: 11px !important;
         font-weight: 700 !important;
         color: #fff !important;
         padding-top: 5px !important;
@@ -118,7 +131,7 @@
     }
 
     .financial_market_search {
-        display: flex;
+
         margin-bottom: 20px;
     }
 
@@ -138,6 +151,16 @@
         font-size: 14px;
         font-weight: normal;
     }
+
+    #all_data tr .financial_value {
+        padding: 3px;
+        width: fit-content;
+    }
+
+    .statistical_metrics_chart {
+        border: 1px solid rgba(227, 231, 237, 0.1);
+        padding: 20px;
+    }
 </style>
 
 
@@ -151,15 +174,27 @@
 <!-- main-header -->
 <div class="main-header  side-header nav nav-item">
     <div class="container-fluid">
+
         <div class="main-header-left ">
             <!-- <div class="app-sidebar__toggle mobile-toggle" data-toggle="sidebar">
                 <a class="open-toggle" href="#"><i class="header-icons" data-eva="menu-outline"></i></a>
                 <a class="close-toggle" href="#"><i class="header-icons" data-eva="close-outline"></i></a>
             </div> -->
-            <div class="main-header-center ml-3 d-sm-none d-md-none d-lg-block">
+            <!-- <div class="main-header-center ml-3 d-sm-none d-md-none d-lg-block">
                 <input type="search" class="form-control" placeholder="Search for anything...">
                 <button class="btn"><i class="fas fa-search"></i></button>
-            </div>
+            </div> -->
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <a class="navbar-brand heading-black" href="index.html">
+                    Fin-Dash
+                </a>
+                <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
+                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span data-feather="grid"></span>
+                </button>
+
+            </nav>
         </div>
         <div class="main-header-center">
             <div class="responsive-logo">
@@ -789,51 +824,8 @@
 
     <!-- cryptop table -->
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-6">
             <form action="">
-                <div class="search_table_wrp">
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <th>Ticker</th>
-                                <td><span id="ticker_name"></span></td>
-                            </tr>
-                            <tr>
-                                <th>Date</th>
-                                <td><span id="date"></span></td>
-                            </tr>
-                            <tr>
-                                <th>Time Frame</th>
-                                <td>Last 24 Hours</td>
-                            </tr>
-                            <tr>
-                                <th>Average Price(Every 5 minutes)</th>
-                                <td><span id="avg_price_crypto"></span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="financial_market_search">
-                        <form class="d-flex">
-                            <!-- <input class="form-control me-2 market_search_bar" id="cryptoSearch" type="search" placeholder="Search"
-                                aria-label="Search"> -->
-
-                            <select class="form-select crypto mr-3" id="crypto_select"
-                                aria-label="Default select example">
-                                <option value="BTSUSDT" selected>BTS/USDT</option>
-                                <option value="DASHUSDT">Dash/USDT</option>
-                                <option value="EURUSDT">EUR/USDT</option>
-                                <option value="ETHUSDT">ETH/USDT</option>
-                                <option value="IOTAUSDT">IOTA/USDT</option>
-                                <option value="LTCUSDT">LTC/USDT</option>
-                                <option value="XMRUSDT">XMR/USDT</option>
-                                <option value="NEOUSDT">NEO/USDT</option>
-                            </select>
-
-                            <button class="btn market_search_button" id="search_crypto" type="submit">Search</button>
-                        </form>
-                    </div>
-
-                </div>
                 <div class="price_data_table_wrp">
                     <table id="price_data_table" class="table table-striped">
                         <thead>
@@ -853,14 +845,14 @@
                         </thead>
                         <tbody id="all_data">
                             <tr>
-                                <th class="financial_value">23/5/21</th>
-                                <th class="financial_value">Open</th>
-                                <th class="financial_value">High</th>
-                                <th class="financial_value">Low</th>
-                                <th class="financial_value">Close</th>
-                                <th class="financial_value">Volume</th>
-                                <th class="financial_value">Absolute Move </th>
-                                <th class="financial_value">Weekly Return</th>
+                                <td class="financial_value">23/5/21</td>
+                                <td class="financial_value">Open</td>
+                                <td class="financial_value">High</td>
+                                <td class="financial_value">Low</td>
+                                <td class="financial_value">Close</td>
+                                <td class="financial_value">Volume</td>
+                                <td class="financial_value">Absolute Move </td>
+                                <td class="financial_value">Weekly Return</td>
                             </tr>
 
                         </tbody>
@@ -885,7 +877,56 @@
                 </div>
             </form>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
+            <div class="search_table_wrp">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Ticker</th>
+                            <td><span id="ticker_name"></span></td>
+                        </tr>
+                        <tr>
+                            <th>Date</th>
+                            <td><input type="date" id="date_crypto" /></td>
+                        </tr>
+                        <tr>
+                            <th>Time Frame</th>
+                            <td>
+                                <select class="form-select crypto mr-3" id="crypto_time"
+                                    aria-label="Default select example">
+                                    <option value="1MINUTE" selected>1 Minute</option>
+                                    <option value="30MINUTE">30 Minute</option>
+                                    <option value="1WEEK">1 Week</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Average Price(Every 5 minutes)</th>
+                            <td><span id="avg_price_crypto"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="financial_market_search">
+                    <form class="d-flex">
+                        <!-- <input class="form-control me-2 market_search_bar" id="cryptoSearch" type="search" placeholder="Search"
+                            aria-label="Search"> -->
+
+                        <select class="form-select crypto mr-3" id="crypto_select" aria-label="Default select example">
+                            <option value="BTSUSDT" selected>BTS/USDT</option>
+                            <option value="DASHUSDT">Dash/USDT</option>
+                            <option value="EURUSDT">EUR/USDT</option>
+                            <option value="ETHUSDT">ETH/USDT</option>
+                            <option value="IOTAUSDT">IOTA/USDT</option>
+                            <option value="LTCUSDT">LTC/USDT</option>
+                            <option value="XMRUSDT">XMR/USDT</option>
+                            <option value="NEOUSDT">NEO/USDT</option>
+                        </select>
+
+                        <button class="btn market_search_button" id="search_crypto" type="submit">Search</button>
+                    </form>
+                </div>
+
+            </div>
             <div class="symbol_data_wrp">
                 <table class="table symbol_data_table">
                     <tbody>
@@ -1005,27 +1046,30 @@
                 </table>
             </div>
         </div>
-    </div>
-    <div class="visualized_statistical_metrics">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="statistical_metrics_title">
-                    <h6>Metrics</h6>
+        <div class="col-lg-3">
+            <div class="visualized_statistical_metrics">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="statistical_metrics_title">
+                            <h6>Metrics</h6>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="statistical_metrics_chart">
+                            Chart Section
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="statistical_metrics_chart">Chart Section</div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="statistical_metrics_chart">Chart Section</div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="statistical_metrics_chart">
-                    Chart Section
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="statistical_metrics_chart">Chart Section</div>
-            </div>
-            <div class="col-lg-4">
-                <div class="statistical_metrics_chart">Chart Section</div>
             </div>
         </div>
     </div>
+
     <!-- /crypto table -->
 
     <!-- row -->
@@ -1540,7 +1584,19 @@
 
 
 
+    // $(document).on('change', "#crypto_time", function () {
+    //     var user_time = $(this).val()
+    //     var user_date = document.getElementById("date_crypto").value;
+    //     alert(user_date)
+    //     $.ajax({
+    //         type: 'GET',
+    // url: "/user/all_data_filter/" + user_date + "/" + user_time + "/",
+    //         success: function (data) {
+    //             console.log(data)
+    //         },
 
+    //     });
+    // })
 
     $("#search_crypto").click(function (e) {
         e.preventDefault();
@@ -1548,47 +1604,68 @@
         var cryptoCoin = crypto_val.value;
         document.getElementById("ticker_name").innerHTML = cryptoCoin;
         var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-        document.getElementById("date").innerHTML = utc;
+        var user_date = document.getElementById("date_crypto").value;
+        /*date*/
+        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const d = new Date(user_date);
+        const selecteddate  = user_date.split('-');
+        // var selecteddate = d.getDate()+1;
+        var selectedmonth = monthNames[d.getMonth()];
+        var final_date = (selecteddate[2]+ " "+ selectedmonth + " , "+ selecteddate[0]);
+      
+        // var selectedyear = d.getFullYear();
+        // d.toLocaleString('en-us', { month: 'short' })
+        // alert(user_date+"--"+selecteddate+ "--" +selectedmonth+"=="+selectedyear);
+        /*over*/
+        var crypto_time = document.getElementById("crypto_time");
+        var user_time = crypto_time.value;
+        alert(user_time);
 
         $.ajax({
             type: 'GET',
-            url: "/user/all_data/" + cryptoCoin,
+            url: "/user/avg_price/" + cryptoCoin,
             success: function (data) {
+                document.getElementById("avg_price_crypto").innerHTML = (parseFloat(data.price).toFixed(4));
+            },
+
+        });
+
+        $.ajax({
+            type: 'GET',
+            url: "/user/all_data/" + cryptoCoin + "/" + final_date + "/" + user_time + "/",
+            success: function (data) {
+                console.log(data)
                 $("#all_data").empty()
-                data.forEach(element => {
-                    var open_time = element[0]
+                for (let i = 0; i < data.length; i++) {
+                    var open_time = data[i][0]
                     date_epoch = String(new Date(open_time))
                     var d = date_epoch.slice(0, 14);
                     var t = date_epoch.slice(16, 24);
-                    var open = element[1]
-                    var high = element[2]
-                    var low = element[3]
-                    var close = element[4]
-                    var Volume = element[5]
+                    var open = data[i][1]
+                    var high = data[i][2]
+                    var low = data[i][3]
+                    var close = data[i][4]
+                    var Volume = data[i][5]
 
+                    var weeklyReturn = (data[i][5] / data[i + 1][5]) - 1
                     $("#all_data").append(`
                     <tr>
-                            <th class="financial_value">${d}<br> ${t}</th>
-                            <th class="financial_value">${parseFloat(open).toFixed(3)}</th>
-                            <th class="financial_value">${parseFloat(high).toFixed(3)}</th>
-                            <th class="financial_value">${parseFloat(low).toFixed(3)}</th>
-                            <th class="financial_value">${parseFloat(close).toFixed(3)}</th>
-                            <th class="financial_value">${parseFloat(Volume).toFixed(3)}</th>
-                            <th class="financial_value">Absolute Move </th>
-                            <th class="financial_value">Weekly Return</th>
+                            <td class="financial_value">${d}<br> ${t}</td>
+                            <td class="financial_value">${parseFloat(open).toFixed(3)}</td>
+                            <td class="financial_value">${parseFloat(high).toFixed(3)}</td>
+                            <td class="financial_value">${parseFloat(low).toFixed(3)}</td>
+                            <td class="financial_value">${parseFloat(close).toFixed(3)}</td>
+                            <td class="financial_value">${parseFloat(Volume).toFixed(3)}</td>
+                            <td class="financial_value">${Math.abs(weeklyReturn).toFixed(3)} </td>
+                            <td class="financial_value">${parseFloat(weeklyReturn).toFixed(3)}</td>
                         </tr>
                     `)
+                }
 
-                });
-                $.ajax({
-                    type: 'GET',
-                    url: "/user/avg_price/" + cryptoCoin,
-                    success: function (data) {
-                        document.getElementById("avg_price_crypto").innerHTML = (parseFloat(data.price).toFixed(4));
-                    },
-                    
-                });
+
+
             },
+
 
         });
     });
@@ -1759,9 +1836,22 @@
         });
 
     };
-
-
     setInterval(ajax_per_rep, 5000);
+
+    // Stocks API
+    // var ajax_stocks = function () {
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: "/user/stocks_data/AAPL",
+    //         success: function (data) {
+    //             console.log(data)
+    //         },
+
+    //     });
+
+    // };
+    // setInterval(ajax_stocks, 30000);
+
 </script>
 
 {% endblock %}

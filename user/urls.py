@@ -20,10 +20,14 @@ urlpatterns = [
     path('ltc_data/',get_latest_ltc),
     path('xmr_data/',get_latest_xmr),
     path('neo_data/',get_latest_neo),
-    path('all_data/<str:crypto>',crypto_all_data),
+    path('all_data/<str:crypto>/<str:date>/<str:time>/',crypto_all_data),
     path('history/<str:crypto>',crypto_history),
     path('history_data/<str:crypto>',crypto_history_data),
     path('avg_price/<str:crypto>',average_price),
+    # path("all_data_filter/<str:date>/<str:time>/",all_data_filter,name="all_data_filter"),
+    # Stocks API stocks_data
+    # path('stocks_data/<str:stocks>',stocks_data),
+    
     path('demo', demo, name='demo'),
   
 ]
