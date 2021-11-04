@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model, login, authenticate, logout, upd
 from django.contrib import messages
 from django.core.mail import send_mail, EmailMessage
 from django.template.loader import render_to_string
-
+import requests
 from djangoProject.settings import BASE_DIR
 from .utils import account_activation_token
 from django.utils.encoding import force_bytes, force_text
@@ -27,6 +27,8 @@ from unicorn_binance_websocket_api.unicorn_binance_websocket_api_manager import 
 api_key = "Bs0hCk8zsE6IteGIyXLPVBGEnYGhcBTjjWJfVMKSZFU5YSwiAMhx2rc1ICRcWkOa"
 api_secret = "D8UdEhDFB61BSH09Kuqlrt2IAjGKPJ0I2Ok2JGzwenUCOHskQmRSqMdh3WWtaTvJ"
 client = Client(api_key, api_secret)
+
+stock_api_key = "d869560a29dd906e222619ca08e30eb3"
 
 # Create your views here.
 User = get_user_model()
@@ -85,7 +87,7 @@ btc_price = {'error':False}
 def btc_trade_history(msg):
     ''' define how to process incoming WebSocket messages '''
     if msg['e'] != 'error':
-        print(msg['c'])
+        
         btc_price['last'] = msg['c']
         btc_price['bid'] = msg['b']
         btc_price['last'] = msg['a']
@@ -103,7 +105,7 @@ def get_latest_btc(request):
     # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
     oldest_data_from_stream_buffer = ubwa.pop_stream_data_from_stream_buffer()
     import time
-    print(oldest_data_from_stream_buffer)
+    
     return JsonResponse(oldest_data_from_stream_buffer,safe=False)
 
 
@@ -115,7 +117,7 @@ def get_latest_eth(request):
     # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
     oldest_data_from_stream = ethbtc.pop_stream_data_from_stream_buffer()
     import time
-    print(oldest_data_from_stream)
+    
     return JsonResponse(oldest_data_from_stream,safe=False)
 
 iotausd = BinanceWebSocketApiManager(exchange="binance.com")
@@ -125,7 +127,7 @@ def get_latest_iot(request):
     # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
     oldest_data_from_stream = iotausd.pop_stream_data_from_stream_buffer()
     import time
-    print(oldest_data_from_stream)
+    
     return JsonResponse(oldest_data_from_stream,safe=False)
 
 repusd = BinanceWebSocketApiManager(exchange="binance.com")
@@ -135,7 +137,7 @@ def get_latest_rep(request):
     # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
     oldest_data_from_stream = repusd.pop_stream_data_from_stream_buffer()
     import time
-    print(oldest_data_from_stream)
+    
     return JsonResponse(oldest_data_from_stream,safe=False)
 
 btsusd = BinanceWebSocketApiManager(exchange="binance.com")
@@ -145,7 +147,7 @@ def get_latest_bts(request):
     # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
     oldest_data_from_stream = btsusd.pop_stream_data_from_stream_buffer()
     import time
-    print(oldest_data_from_stream)
+    
     return JsonResponse(oldest_data_from_stream,safe=False)
 
 dashusd = BinanceWebSocketApiManager(exchange="binance.com")
@@ -155,7 +157,7 @@ def get_latest_dash(request):
     # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
     dash_data = dashusd.pop_stream_data_from_stream_buffer()
     import time
-    print(dash_data)
+   
     return JsonResponse(dash_data,safe=False)
 
 eurusd = BinanceWebSocketApiManager(exchange="binance.com")
@@ -165,7 +167,7 @@ def get_latest_eur(request):
     # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
     eur_data = eurusd.pop_stream_data_from_stream_buffer()
     import time
-    print(eur_data)
+    
     return JsonResponse(eur_data,safe=False)
 
 ltcusd = BinanceWebSocketApiManager(exchange="binance.com")
@@ -175,7 +177,7 @@ def get_latest_ltc(request):
     # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
     ltc_data = ltcusd.pop_stream_data_from_stream_buffer()
     import time
-    print(ltc_data)
+    
     return JsonResponse(ltc_data,safe=False)
 
 xmrusd = BinanceWebSocketApiManager(exchange="binance.com")
@@ -185,7 +187,7 @@ def get_latest_xmr(request):
     # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
     xmr_data = xmrusd.pop_stream_data_from_stream_buffer()
     import time
-    print(xmr_data)
+    
     return JsonResponse(xmr_data,safe=False)
 
 neousd = BinanceWebSocketApiManager(exchange="binance.com")
@@ -195,23 +197,34 @@ def get_latest_neo(request):
     # ubwa.create_stream(['trade', 'kline_1m'], ['btcusdt', 'bnbbtc', 'ethbtc'])
     neo_data = neousd.pop_stream_data_from_stream_buffer()
     import time
-    print(neo_data)
+    
     return JsonResponse(neo_data,safe=False)
 
-def crypto_all_data(request,crypto):
-    klines = client.get_historical_klines(crypto, Client.KLINE_INTERVAL_30MINUTE, "1 day ago UTC")
-    print(klines)
+def crypto_all_data(request,crypto,date,time):
+    # klines = client.get_historical_klines(crypto, Client.KLINE_INTERVAL_30MINUTE, "1 day ago UTC");
+    if time == "1MINUTE":
+        print('1 min called')
+        klines = client.get_historical_klines(crypto, Client.KLINE_INTERVAL_1MINUTE, date)    
+    if time == "30MINUTE":
+        klines = client.get_historical_klines(crypto, Client.KLINE_INTERVAL_30MINUTE, date)    
+    if time == "1WEEK":
+        klines = client.get_historical_klines(crypto, Client.KLINE_INTERVAL_30MINUTE, date)    
     return JsonResponse(klines,safe=False)
+
+# def all_data_filter(request,date,time):
+#     print(date)
+#     print(time)
+#     return JsonResponse({'msg':'success','date':date,'time':time})
 
 def crypto_history(request,crypto):
     klines = client.get_historical_klines(crypto, Client.KLINE_INTERVAL_1MINUTE, "1 day ago UTC")
     history_data = {}
-    print(klines)
+    
     for i in klines:
         s,ms = divmod(int(i[6]),1000)
         time = datetime.fromtimestamp(s).strftime("%m/%d/%Y, %H:%M:%S")
         history_data[time] = i[4]
-    # print(history_data)
+    
     first = list(history_data.values())[0]
     last = list(history_data.values())[-1]
     res = dict(reversed(list(history_data.items())))
@@ -232,12 +245,12 @@ def crypto_history(request,crypto):
 def crypto_history_data(request,crypto):
     klines = client.get_historical_klines(crypto, Client.KLINE_INTERVAL_1MINUTE, "1 day ago UTC")
     history_data = {}
-    print(klines)
+    
     for i in klines:
         s,ms = divmod(int(i[6]),1000)
         time = datetime.fromtimestamp(s).strftime("%m/%d/%Y, %H:%M:%S")
         history_data[time] = i[4]
-    # print(history_data)
+    
     first = list(history_data.values())[0]
     last = list(history_data.values())[-1]
     res = dict(reversed(list(history_data.items())))
@@ -260,6 +273,11 @@ def average_price(request,crypto):
 
 def demo(request):
     return render(request, 'demo.html')
+
+# Stocks api
+def stocks_data(request,stocks):
+    stock_data = requests.get("http://api.marketstack.com/v1/eod?access_key=d869560a29dd906e222619ca08e30eb3&symbols=AAPL")
+    return JsonResponse(stock_data,safe=False)
 
 
 def updatepassword(request):
@@ -303,14 +321,13 @@ def forgetpassword(request):
             email_subject = 'Reset Your Account Password'
 
             activate_url = 'http://' + current_site + link
-            print(activate_url)
+            
 
             # plain_message = strip_tags(html_message)
             from_email = settings.EMAIL_HOST_USER,
-            print(from_email)
+            
             to = email
-            print(to)
-            # send_mail(email_subject, None, from_email, [to],html_message=html_message)
+                        # send_mail(email_subject, None, from_email, [to],html_message=html_message)
 
             # message = get_template('forgotPasswordMail.html').render_to()
             send_mail(
